@@ -1,0 +1,12 @@
+
+
+.headerRight{
+
+overflow: hidden;
+text-align: center;
+padding-right: 60px;
+display: flex;
+align-items: center;
+border-style: none;
+}
+

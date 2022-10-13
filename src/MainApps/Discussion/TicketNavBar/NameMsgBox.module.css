@@ -1,0 +1,29 @@
+
+
+
+
+.nameMsgBox{
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+
+}
+
+
+.usersName{
+position: relative;
+overflow: hidden;	
+font-size: calc( 0.25 * var(--headerHeight) );
+font-weight: lighter;
+text-align: left;
+color: var(--themeColor);
+}
+
+.lastMessage{
+position: relative;
+color: grey;
+text-align: left;
+
+
+}

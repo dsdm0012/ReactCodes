@@ -1,0 +1,34 @@
+
+
+
+.switchBar{
+
+
+height: 40px;
+width:95%;
+border-style: solid;
+margin: auto;
+border-width: 1px;
+border-color: lightgrey;
+border-bottom-style: none;
+}
+
+.createNoticeButton{
+
+height: 100%;
+border-style: solid;;
+font-size: 20px;
+cursor: pointer;
+border-width: 1px;
+border-color: lightgrey;
+
+}
+
+.notices{
+
+width: 100%;
+margin: auto;
+
+
+
+}

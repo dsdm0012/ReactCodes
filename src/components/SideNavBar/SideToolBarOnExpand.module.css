@@ -1,0 +1,35 @@
+.parentDiv{
+
+    position: relative;
+    width: var(--sideNavBarWidth);
+    top:var(--headerHeight);
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.sideToolBarDiv{
+      text-decoration: none;
+      font-size: var(--sideNavBarFontSize);
+      color: var(--sideNavBarIconColor);
+      background-color:var(--sideToolBarBkgColor);/*#3f5173*/
+      /*#454444;*/
+      border-style: none;
+      border-width: thin;
+      display: flex;
+      font-style: normal;
+      transition: 0.3s;
+      font-weight: 100;
+      width: var(--sideNavBarWidth);
+      text-align: left;
+      position:fixed;
+      top:var(headerHeight);
+      justify-content: center;
+      box-shadow: 5px 5px 5px #383838 inset;
+      height:var(--sideToolBarHeight);
+      z-index: 2;
+      transition: 0.5s;
+      align-items: center;
+      overflow-x: hidden;
+      overflow-y: hidden;
+}
+

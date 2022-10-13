@@ -1,0 +1,11 @@
+
+
+
+.oneFile{
+border-radius: 3px;
+width: 100%;
+aspect-ratio: 1.4/2;
+object-fit: contain;
+border-style: solid;
+}
+

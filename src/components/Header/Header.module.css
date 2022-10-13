@@ -1,0 +1,23 @@
+
+
+header{
+
+     background-color: var(--themeColor);
+     height: var(--headerHeight);
+     text-align: center;
+     display: flex;
+     justify-content: space-between;
+     margin: auto;
+     line-height:var(--headerHeight);
+     font-size: var(--headerFontSize);
+     box-shadow:none;
+     position: fixed;
+     width: 100%;
+     z-index:2;
+
+}
+
+
+
+
+

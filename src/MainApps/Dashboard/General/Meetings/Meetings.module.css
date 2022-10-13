@@ -1,0 +1,37 @@
+
+
+.meetings{
+
+width: 100%;
+margin: auto;
+/*margin-top:200px;
+margin-left:200px;
+*/
+}
+
+
+
+
+.switchBar{
+
+
+height: 40px;
+width:95%;
+border-style: solid;
+margin: auto;
+border-width: 1px;
+border-color: lightgrey;
+border-bottom-style: none;
+}
+
+
+
+.createMeetingButton{
+
+height: 100%;
+border-style: solid;;
+font-size: 20px;
+cursor: pointer;
+border-width: 1px;
+border-color: lightgrey;
+}

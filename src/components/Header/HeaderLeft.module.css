@@ -1,0 +1,115 @@
+
+@import url("../../App.css");
+
+.headerLeft{
+
+    text-align: center;
+    padding-left: 20px;
+    display: flex;
+    overflow: hidden;
+    border-style: none;
+    }
+
+.logo{
+    width: var(--headerLogoWidth);
+    height: var(--headerLogoWidth);
+    border-radius: 50%;
+    position: relative;
+    /*following lines are to align the image vertically in the middle*/
+    top: 50%;
+    -webkit-transform: perspective(1px) translateY(-50%);
+    -ms-transform: perspective(1px) translateY(-50%);
+    transform: perspective(1px) translateY(-50%);
+    }
+
+
+
+@media only screen and (max-width: 700px) {
+
+.logo{
+
+display:none;
+}
+
+}
+
+
+
+
+
+
+
+
+
+.courseNameButton{
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: lighter !important;
+    font-style: normal;
+    background-color: var(--themeColor);
+    /*border-style: solid;*/
+    }
+
+.courseNameButton i{
+font-size: calc( 0.35 * var(--headerHeight) );
+font-style: normal;
+font-weight: lighter !important;
+font-family: Roboto;
+}
+
+
+
+
+.superScript{
+    position: relative;	
+    vertical-align: top; 
+    font-size: 0.8rem;
+    top: -0.8em;
+    font-family: Roboto; 
+    }
+
+
+
+.ExpConButton{
+font-size: 20px;
+height: calc( 0.7 * var(--headerHeight));
+position: relative;
+top: 50%;
+-webkit-transform: perspective(1px) translateY(-50%);
+-ms-transform: perspective(1px) translateY(-50%);
+transform: perspective(1px) translateY(-50%);
+left: 10px;
+border-style: none;
+background-color:var(--headerExpConBtnBkgColor); 
+/*#1e458a;*/
+color: white;
+cursor: pointer;
+}
+
+
+.ExpConIcon{
+
+
+
+
+}
+
+
+.clickDash:hover{
+cursor:pointer;
+}
+
+
+.backButton{
+background-color: var(--themeColor);
+border-style: none;
+color: white;
+cursor: pointer;
+padding-right: 20px;
+}
+
+
+.BackIcon{
+font-size:calc( 0.5 * var(--headerHeight) );
+}

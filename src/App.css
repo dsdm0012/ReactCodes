@@ -1,0 +1,219 @@
+
+
+
+
+
+html{
+   
+     /*global color codes*/
+     --themeColor:#224C98;
+     --lightThemeColor1:#edf3fc;
+     --headerIconColor:#9fbaed;
+     --headerIconColorOnhover:white;
+     --headerExpConBtnBkgColor:#1e458a;
+     --sideNavBarIconColor: white;
+     --sideNavBarBkgColor: #505050;
+
+     
+     --sideNavBarBtnhoverColor: #686868;
+     --sideNavBarButtonTextColor:white; 
+     --sideToolBarBkgColor:#454444;
+
+     --sideNavBarDashBoardBkgColor: #505050;
+     --sideNavBarDashBoardBtnColor:white;
+     --sideNavBarDashBoardBtnBkgColor:grey;
+     --sideNavBarDashBoardOnClickBtnColor:var(--themeColor);
+     --sideNavBarDashBoardOnClickBtnBkgColor:white;
+
+
+
+     --userProfileInfoBoxBkgColor: white;
+   
+     --mainAppContainerBkgColor:#E8E8E8;
+
+     --ticketTextColor: #364a61;
+
+     --TextColorDarkBlue1: #364a61;
+
+     --clickBtnColorDash: #ff5349;
+     --clickBtnColorDashBackground: #ffd4d1;
+
+     --headerHeight: 3.5rem;
+     --headerFontSize: calc( 0.35 * var(--headerHeight) );
+     --headerLogoWidth: calc( 0.80 * var(--headerHeight));
+     
+
+     --sideNavBarWidth: calc( 3.5 * var(--headerHeight)) ;
+     --sideNavBarWidthOnContract: 0px;
+     --sideNavBarWidthMobile: 3.4rem;
+     --sideNavBarFontSize: calc( 0.33 * var(--headerHeight) );
+     --headerLogoWidth: calc( 0.80 * var(--headerHeight));
+
+     --headerRightIconsColor: #9fbaed;
+
+     --sideToolBarHeight: calc(0.77 * var(--headerHeight));
+     --topInfoBarInstructorWidth:calc( 7.0 * var(--headerHeight)); 
+
+
+     --sideBarHidePoint: 850px;
+
+      /*Top bar common style parameters inside the course */
+
+      --topRightButtonWidth_Course:100px;
+      --topRightButtonBkgColorInActive_Course:lightgrey;
+      --topRightButtonTextColorInActive_Course:#36454F;
+      --topRightButtonBkgColorActive_Course:lightgrey;
+      --topRightButtonTextColorActive_Course:var(--themeColor);
+      --topRightButtonIconColorInActive:grey;
+      --topRightButtonIconColorActive:var(--themeColor);
+      --topRightButtonUnderlineColorActive:var(--themeColor);
+      --topRightButtonUnderlineColorInActive:white;
+      --topRightButtonTextFontSize_Course:18px;
+      --topRightButtonIconFontSize_Course:30px;
+      --topInnerBarWidth:90%;
+
+      /*Top bar common style parameters in the dashboard/home*/
+      --topRightButtonWidth_home:var(--topRightButtonWidth_Course);
+      --topRightButtonTextFontSize_home: var(--topRightButtonTextFontSize_Course);
+      --topRightButtonIconFontSize_home:var(--topRightButtonIconFontSize_Course);
+
+}
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
+
+
+
+
+
+
+
+
+.edrapp{
+
+     width:100%;
+     background-color: white;
+     
+     -ms-overflow-style: none; 
+     scrollbar-width: none;
+}
+
+.edrapp::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+@media screen  and (max-width: 650px)  {
+html{
+   --topRightButtonWidth_Course:50px;
+   --topRightButtonTextFontSize_Course:12px;
+   --topRightButtonIconFontSize_Course:18px;
+ }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* default screen resolution designed for: 1920x1080*/
+/*1700px - 1950px: header:4.5rem*/
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+@media screen and (min-width: 1050px) and (max-width: 1360px) {
+
+html{
+--headerHeight: 3.5rem;
+
+ }
+}
+
+
+
+
+
+@media screen and (min-width: 1360px)  and (max-width:1700px){
+
+html{
+--headerHeight: 3.8rem;
+
+ }
+}
+
+
+
+
+
+
+
+@media screen and (min-width: 1950px)  and (max-width:2300px){
+
+html{
+--headerHeight: 5.0rem;
+
+ }
+}
+
+
+
+@media screen and (min-width: 2300px)  and (max-width:2500px){
+
+html{
+--headerHeight: 5.7rem;
+
+ }
+}
+
+
+
+
+
+
+
+@media screen and (min-width: 2500px) {
+
+html{
+--headerHeight: 6.5rem;
+}
+
+}
+
+
+@media screen and (min-width: 3000px) {
+
+html{
+--headerHeight: 10.5rem;
+}
+
+}
+
+*/
+
