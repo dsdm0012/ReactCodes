@@ -10,7 +10,11 @@ import {RiVideoLine} from 'react-icons/ri';
 import {AiOutlineFile} from 'react-icons/ai';
 import {BsLink45Deg} from 'react-icons/bs';
 import {CgNotes} from 'react-icons/cg';
-
+import TopToolBoxDurga from './TopToolBoxDurga';
+import {FaHourglassHalf} from 'react-icons/fa';
+import {FaCheckCircle} from 'react-icons/fa';
+import {FaCalendarAlt} from 'react-icons/fa';
+import {FaPenAlt} from 'react-icons/fa';
 
 
 
@@ -356,13 +360,13 @@ return (
          <div className={classes.leftInnerBoxTopBar}>
         	<div className={classes.TitleBox1}> 
 	           
-	               Put your title and buttons here 
+	              Your Assignments
 	          
 	        </div>
 	        
 	        <div className={classes.TitleBox2}> 
 	        
-                   <button type="button"> Create an assignment </button>
+                   <button type="button" className={classes.createbtn}><FaPenAlt/> Create an assignment </button>
 
 	        </div>
 		
@@ -372,19 +376,19 @@ return (
          <div className={classes.rightButtonsBox}>         
               <TopToolBox toolBoxStyle = {toolBox1Style} 
 	             onPress = {showToolBox1Handler} 
-	             icon={BsFillGrid3X3GapFill} 
+	             icon={FaHourglassHalf} 
 	             iconName="Pending"
 	             notificationNum="0"
 	             />
               <TopToolBox toolBoxStyle = {toolBox2Style} 
 	             onPress = {showToolBox2Handler} 
-	             icon={CgNotes} 
+	             icon={FaCheckCircle} 
 	             iconName="Completed"
 	             notificationNum="0"
 	             />
              <TopToolBox toolBoxStyle = {toolBox3Style} 
 	             onPress = {showToolBox3Handler} 
-	             icon={RiVideoLine} 
+	             icon={FaCalendarAlt} 
 	             iconName="All"
 	             notificationNum="0"
 	             />

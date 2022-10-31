@@ -2,9 +2,10 @@ import React,{useState,useEffect,useRef} from "react";
 import classes from "../CommonAppUtilities/MainAppContainer.module.css"
 import TopInfoBarAssignments from './TopInfoBarAssignments';
 //import TopTitleBar from '../../CommonAppUtilities/TopTitleBar';
-import FindBookContentDiv from './AssignmentsContentDiv';
+import AssignmentsContentDiv from './AssignmentsContentDiv';
 
 import Separator from "../CommonAppUtilities/Separator";
+
 
 const Assignments=(props)=>{
 
@@ -62,13 +63,14 @@ const Assignments=(props)=>{
        */}
       <Separator/>
 
-      <FindBookContentDiv
+      <AssignmentsContentDiv
            userData={props.userData}
            onPress={props.onPress}
            dashboardCourses={props.dashboardCourses}
            selectedCourse={props.selectedCourse}
 
 	   />
+     
 
       </div>
 

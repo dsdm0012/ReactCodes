@@ -1,16 +1,27 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import classes from './AssignmentsContentDiv.module.css';
 import base from '../CommonAppUtilities/AppContentDiv.module.css';
 import TopToolBarTeacher from './components/Teacher/TopToolBarV1';
-
-
-
+import Pending from './Pending.js';
+import Completed from './Completed';
+import All from './All';
+import {getuser} from '../../CommonApps/AllAPICalls';
 
 
 
 
 const AssignmentsContentDiv=(props)=>{
 
+  const [userData,setData]=useState(null);
+
+
+
+  useEffect(()=>{
+    console.log("useEffect-2");   
+          getuser({setData});
+      },[])
+
+      console.log("userData", userData);
 
     const reRenderHandler=()=>{
       //setRerender(!rerender);
@@ -27,12 +38,24 @@ const AssignmentsContentDiv=(props)=>{
 
 
      const showToolBox1PageContentHandler=()=>{
+      setToolBox1PageMounted(true);
+      setToolBox2PageMounted(false);
+      setToolBox3PageMounted(false);
+      
      }
 
      const showToolBox2PageContentHandler=()=>{
+      setToolBox1PageMounted(false);
+      setToolBox2PageMounted(true);
+      setToolBox3PageMounted(false);
+     
      }
 
      const showToolBox3PageContentHandler=()=>{
+      setToolBox1PageMounted(false);
+      setToolBox2PageMounted(false);
+      setToolBox3PageMounted(true);
+     
      }
 
      const showToolBox4PageContentHandler=()=>{
@@ -41,6 +64,7 @@ const AssignmentsContentDiv=(props)=>{
      const showToolBox5PageContentHandler=()=>{
      }
 
+     const [videosData, getVideosData]=useState(null); 
 
 
 
@@ -71,15 +95,16 @@ return (
                                toolBox2PageMounted = {toolBox2PageMounted}
                                toolBox3PageMounted = {toolBox3PageMounted}
                                toolBox4PageMounted = {toolBox4PageMounted}
-                               toolBox4PageMounted = {toolBox5PageMounted}
+                               //toolBox4PageMounted = {toolBox5PageMounted}
                                selectedCourse = {props.selectedCourse}
                                />
 
 
 
 
-
-
+{toolBox1PageMounted && <Pending onClick={showToolBox1PageContentHandler} />}
+{toolBox2PageMounted && <Completed onClick={showToolBox2PageContentHandler}/>}
+{toolBox3PageMounted && <All onClick={showToolBox3PageContentHandler}/>}
 
 
 </div>
