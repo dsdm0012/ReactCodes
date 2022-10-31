@@ -5,16 +5,16 @@
 
 html{
    
-     /*global color codes*/
-     --themeColor:#224C98;
+     /*global color codes */
+     --themeColor: #224C98;
      --lightThemeColor1:#edf3fc;
      --headerIconColor:#9fbaed;
      --headerIconColorOnhover:white;
      --headerExpConBtnBkgColor:#1e458a;
      --sideNavBarIconColor: white;
      --sideNavBarBkgColor: #505050;
-
-     
+     --greenColor1:#65c394;
+     --redColor1: #ff726f;
      --sideNavBarBtnhoverColor: #686868;
      --sideNavBarButtonTextColor:white; 
      --sideToolBarBkgColor:#454444;
@@ -88,6 +88,17 @@ html{
 
 
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
+}
 
 
 
@@ -102,7 +113,7 @@ html{
 }
 
 .edrapp::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 

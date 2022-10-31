@@ -16,8 +16,15 @@ return (
 
 <div className={classes.mateTimeBox}>
 
- 
-  <div className={classes.astatus}><b> {props.data.status}</b>  </div>
+  { props.data.status ==="open" &&
+  <div className={classes.astatus} style={{background:"var(--greenColor1)", color:"white"}}><b> { props.data.status}</b>  </div>
+  }
+
+  { props.data.status ==="closed" &&
+  <div className={classes.astatus} style={{background:"var(--redColor1)", color:"white"}}><b> { props.data.status}</b>  </div>
+  }
+
+
 
 
 </div>

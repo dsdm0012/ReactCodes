@@ -16,41 +16,20 @@ const UserHeadDropDown = (props) =>{
        window.location.reload(false);
     }
 
-    //const [buttonStyle, setButtonStyle] = useState({
-       //backgroundColor:"#b8d1ff",
-       //color:"var(--themeColor)"	    
-    //});
 
    let selectedCourseId = localStorage.getItem('preferredCourseId');
 
    useEffect(()=>{
 
 
-
    },[selectedCourseId]);
 
-   //const onMouseOverButton=()=>{
-   //setButtonStyle({
-   //  backgroundColor:"#ffd4d1",
-   //  color:"#ff5349"
-   //});
 
-   //}
-
-   //const onMouseLeaveButton=()=>{
-     //setButtonStyle({
-     //  backgroundColor:"#b8d1ff",
-     //  color:"var(--themeColor)"
-     //});
-
-   //}
-
-
-  let buttonStyle1={backgroundColor:"#b8d1ff",
+  let buttonStyle2={backgroundColor:"#b8d1ff",
     color:"var(--themeColor)"};
 
-  let buttonStyle2={backgroundColor:"#ffd4d1",
-    color:"#ff5349"};	
+  let buttonStyle1={backgroundColor:"#F0F0F0",
+    color:"grey"};	
 
 
   //console.log("selectedCourseId", typeof selectedCourseId)
@@ -61,14 +40,8 @@ return (
 
 
     <div className={classes.DropDown} >
-	 { props.userData.usertype ===4 &&
-        <div className={classes.courseSelectText} > <b> Select a Project</b></div>	
-         }
 
-         { props.userData.usertype !==4 &&
-        <div className={classes.courseSelectText} > <b> Select a Course</b></div>
-         }
-
+       <div className={classes.topGapBox}> Select a course </div>
 
 
        {
@@ -80,8 +53,8 @@ return (
 		                    key={index}
 		                    style={Number(selectedCourseId) === course.id? buttonStyle2 : buttonStyle1}
 			    > 
-			           <b> {course.subject+":  "}
-		                   {course.courseGlobalCode}</b>
+			           <b className={classes.courseNameBox}> {course.courseShortName}</b>
+		                   <b className={classes.courseCodeBox}>{course.courseGlobalCode}</b>
 			    </button>
 
             })

@@ -15,11 +15,17 @@ return(
 <div className={classes.chatNavBar}>
 
   
-  <TopIdBarLeft />
+  <TopIdBarLeft selectedCourse={props.selectedCourse}
+	        userData={props.userData}
+	        rerender={props.rerender}
+	        />
 
   <TopLeftSearchBar/>
 
-  <TicketBoxContainer onPress={props.onPress}  />
+  <TicketBoxContainer onPress={props.onPress} 
+	               selectedCourse={props.selectedCourse}
+	               userData={props.userData}
+	              />
 
 
 </div>	

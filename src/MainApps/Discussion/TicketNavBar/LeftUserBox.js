@@ -1,10 +1,9 @@
 import React from "react";
 import classes from "./LeftUserBox.module.css"
-import MateIconBox from "./MateIconBox";
 import MateInfoBox from "./MateInfoBox";
 
 
-
+import {BsChatLeftText} from 'react-icons/bs';
 
 
 
@@ -12,18 +11,22 @@ import MateInfoBox from "./MateInfoBox";
 const LeftUserBox = (props) =>{
 
 
-
+	let clickedDiscussionId = localStorage.getItem('clickedDiscussionId');
+        let color = Number(clickedDiscussionId)===Number(props.oneTicket.id)? "#E8E8E8":"white";
+	//let color="white";
 
 return(
 
 <div className={classes.leftUserBox}>
 
 
-<button className={classes.leftUserBoxButton} onClick={props.onPress}  >
+<button className={classes.leftUserBoxButton} onClick={props.onPress} style={{backgroundColor:color}}  >
 
-<MateIconBox userImage={props.userImage} data={props.data} />
+   <div className={classes.mateIconBox}>
+       <BsChatLeftText className={classes.mateIconUserImage}/>
+   </div>
 
-<MateInfoBox userName={props.userName}  data={props.data} />
+   <MateInfoBox userName={props.userName}  data={props.oneTicket} />
 
 
 </button>

@@ -33,7 +33,7 @@ justify-content: space-between;
 border-style:none;
 background-color: white;
 position: relative;
-border-radius: 10px;
+border-radius: 0px 0px  0px 0px;
 }
 
 .leftUserBoxButton:hover{
@@ -41,3 +41,20 @@ background-color: #ebf2ff;
 
 }
 
+
+.mateIconBox{
+
+position: relative;
+height: 100%;
+left: calc( 0.2 * var(--headerHeight) );
+display: flex;
+align-items: center;
+color: grey;
+}
+
+
+
+.mateIconUserImage{
+font-size: 30px;
+color: var(--themeColor);
+}

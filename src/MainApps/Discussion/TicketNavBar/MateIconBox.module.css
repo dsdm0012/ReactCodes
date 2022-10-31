@@ -14,9 +14,6 @@ color: grey;
 
 
 .mateIconUserImage{
-
-height: calc( 0.7 * var(--headerHeight) );
-width: calc( 0.7 * var(--headerHeight) );
-border-radius: 50%;
-
+font-size: 30px;
+color: var(--themeColor);
 }

@@ -42,7 +42,8 @@ return(
         <TopLeftSearchBar/>
 
         <LeftUserBoxContainer  userData={props.userData} 
-	                       switchGroupHandler={props.switchGroupHandler} 
+	                       switchGroupHandler={props.switchGroupHandler}
+	                       selectedCourse={props.selectedCourse}
 	                       />
        </>	  
     }

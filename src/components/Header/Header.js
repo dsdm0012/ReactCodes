@@ -21,6 +21,7 @@ return (
      <HeaderRight
 	userData={props.userData}
 	dashboardCourses ={props.dashboardCourses}
+	rerender={props.rerender}
 	/>	
 
 

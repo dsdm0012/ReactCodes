@@ -61,9 +61,9 @@ const [formData, updateFormData] = useState(initialFormData)
 
 
 
-     createnewchapter({formData});
+     createnewchapter({formData,props});
 
-     props.onPress();
+     //props.onPress();
 
     }
 

@@ -24,8 +24,11 @@ return <li  className={classes.sectionHead} style={props.sectionEditStyle}>
 
                          }
 
+                         {props.editMode && <>
                          <EditSectionButton editSectionHandler={(event)=>props.editSectionHandler({chapterId, sectionId})}/>
                          <DeleteSectionButton deleteSectionHandler={(event)=>props.deleteSectionHandler({sectionId})}/>
+			 </>
+                         }
 
                                               </span>}
 

@@ -11,41 +11,30 @@ const CreateTicketForm=(props)=>{
 
 
 
-const [data, setData ] = useState({});
+    const [data, setData ] = useState({});
+
+    const [ticketType, setTicketType] = useState([{"id": 99999999,"name": "Unable to fetch ticket category"}]);
 
 
-
-
-
-const [ticketType, setTicketType] = useState([{"id": 99999999,"name": "Unable to fetch ticket category"}]);
-
-
-
-  useEffect(() =>{
-
+    useEffect(() =>{
        getalltickets({setData});
+    },[]);
 
-  },[]);
 
-
-  useEffect(() =>{
-
+   useEffect(() =>{
      getticketscategory({setTicketType});
+   },[])
 
-  },[])
 
-
-useEffect(()=>{
-
- getuser({setData});
-
-},[]);
+   useEffect(()=>{
+     getuser({setData});
+   },[]);
 
 
 
 
 
-const initialFormData = Object.freeze({
+    const initialFormData = Object.freeze({
 
         title: "cscssc",
         category: 1,
@@ -57,9 +46,9 @@ const initialFormData = Object.freeze({
 
 
 
-const [formData, updateFormData] = useState(initialFormData)
+    const [formData, updateFormData] = useState(initialFormData)
 
-const handleChange = (e) => {
+    const handleChange = (e) => {
                 updateFormData({
                         ...formData,
                         [e.target.name]: e.target.value.trim(),
@@ -71,13 +60,10 @@ const handleChange = (e) => {
 
 
 
-const handleSubmit = (e) => {
-		e.preventDefault();
-
+    const handleSubmit = (e) => {
+	    e.preventDefault();
             createticket({formData, data});
-
-
-	 window.location.reload(true);
+	    window.location.reload(true);
 	};
 
 

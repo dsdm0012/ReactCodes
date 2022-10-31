@@ -165,24 +165,42 @@ export const getcategorybyId = ({ticketCategory, setCatData})=>{
 
 
 
-export const createticket = ({formData,data})=>{
+export const getticketcategorybyId = ({courseId, getCategoryData})=>{
+
+
+   axiosInstance.get(`tickets/categoriesbycourseid/${courseId}/`).then((res) => {
+                        getCategoryData(data=>res.data);
+                })
+                .catch((error)=>{
+                     if(error.response.status===401){
+                     Logout();
+
+                      }
+
+
+                });
+
+
+}
+
+
+
+
+export const createticket = ({formData,courseId,props})=>{
 
      axiosInstance
-        .post(`tickets/`,{
+        .put(`tickets/createticket/${courseId}/`,{
 
     "title": formData.title,
-    "author": data.id,
-    "category": formData.category,
-    "excerpt": formData.keywords,
-    "content": formData.description,
-    "status": "closed",
-    "pstatus": "draft",
+    "category":formData.category,
+    "visibility": formData.visibility,
     "priority": formData.priority,
-    "resolution": "unresolved",
+    "content": formData.content,
 
 
                         })
                         .then((res) => {
+		        props.rerender();
                 })
          .catch((error)=>{
                      if(error.response.status===401){
@@ -195,14 +213,53 @@ export const createticket = ({formData,data})=>{
 
 }
 
-export const postcomment = ({ticketId, userId, comment})=>{
+
+
+
+
+export const editticket = ({formData,ticketId,props})=>{
+
+     axiosInstance
+        .put(`tickets/editticket/${ticketId}/`,{
+
+         "title": formData.title,
+         "category":formData.category,
+         "visibility": formData.visibility,
+         "priority": formData.priority,
+         "content": formData.content,
+
+
+                        })
+                        .then((res) => {
+                        props.rerender();
+                })
+         .catch((error)=>{
+                     if(error.response.status===401){
+                     Logout();
+
+                      }
+
+
+                });
+
+}
+
+
+
+
+
+
+
+
+
+
+export const postticketcomment = ({ticketId, userId, comment})=>{
 
 
   axiosInstance
-        .post(`tickets/comments/`,{           
-        "ticketId": ticketId,
+        .put(`tickets/createcommentbyticketId/${ticketId}/`,{           
         "commenter": userId,
-        "commenttext": comment,
+        "commenttext": comment
 
                         })
                         .then((res) => {
@@ -217,6 +274,31 @@ export const postcomment = ({ticketId, userId, comment})=>{
                 });
 
 }
+
+
+
+
+
+export const getticketsbycourseid = ({courseId, getAllTicketData, pageNo})=>{
+
+
+   axiosInstance.get(`tickets/ticketsbycourseId/${courseId}/?page=${pageNo}`).then((res) => {
+                        getAllTicketData(allTicketData=>res.data);
+                })
+                .catch((error)=>{
+                     if(error.response.status===401){
+                     Logout();
+
+                      }
+
+
+                });
+
+
+}
+
+
+
 
 
 
@@ -314,6 +396,34 @@ export const getpersonalgeneralchatgroups = ({ getChatGroups})=>{
                 });
 
 }
+
+
+
+export const getcoursechatgroups =({getCourseChatGroups,courseId})=>{
+
+
+
+axiosInstance.get(`getcoursechatgroups/${courseId}/`).then((res) => {
+
+                   getCourseChatGroups(courseChatGroups=>res.data);
+
+                })
+                .catch((error)=>{
+                     if(error.response.status===401){
+                      Logout();
+
+                      }
+
+
+                });
+
+
+
+
+}
+
+
+
 
 
 
@@ -547,9 +657,74 @@ export const getgeneralchatgroups = ({getChatGroups})=>{
 
 
 
+export const editdashboardcourse = ({formData, courseId, props, setEditState})=>{
+
+ axiosInstance.put(`course/editonedashboardcourse/${courseId}/`,{
+
+    "courseShortName": formData.courseShortName,
+    "courseLocalCode": formData.courseLocalCode,
+    "courseStatus": formData.courseStatus,
+    "courseStartDate": formData.courseStartDate,
+    "courseEndDate": formData.courseEndDate,
+    "abouttheCourse": formData.abouttheCourse,
+    "instituteName": formData.instituteName
 
 
-export const createcourse = ({formData,data, props})=>{
+
+                        })
+                        .then((res) => {
+                             setEditState("notSaving");
+                             props.onPress();
+                          })
+
+                        .catch((error)=>{
+                             if(error.response.status===401){
+                              Logout();
+                            }
+
+                        });
+
+
+}
+
+export const editcoursesummary = ({formData, courseId, props, setEditState})=>{
+
+ axiosInstance.put(`course/editonedashboardcourse/${courseId}/`,{
+
+    "courseShortName": formData.courseShortName,
+    "courseLocalCode": formData.courseLocalCode,
+    "courseStatus": formData.courseStatus,
+    "courseStartDate": formData.courseStartDate,
+    "courseEndDate": formData.courseEndDate,
+    "abouttheCourse": formData.abouttheCourse,
+    "instituteName": formData.instituteName,
+    "coursecredit": formData.coursecredit,	 
+
+
+
+                        })
+                        .then((res) => {
+                             setEditState("notSaving");
+                             props.rerender();
+                          })
+
+                        .catch((error)=>{
+                             if(error.response.status===401){
+                              Logout();
+                            }
+
+                        });
+
+
+}
+
+
+
+
+
+
+
+export const createcourse = ({formData,data, setCreateState, props})=>{
 
      axiosInstance
         .post(`course/create/`,{
@@ -572,7 +747,7 @@ export const createcourse = ({formData,data, props})=>{
 
                         })
                         .then((res) => {
-
+                                setCreateState("notCreating");
 				props.onPress();
                 })
          .catch((error)=>{
@@ -776,6 +951,50 @@ export const getcoursesbyCourseId = ({ courseId, getCourseData})=>{
 
 }
 
+export const getvideosbyCourseId = ({pageNo, courseId, getVideosData})=>{
+
+   axiosInstance.get(`course/getvideosbycourseId/${courseId}/?page=${pageNo}`).then((res) => {
+                        getVideosData(videosData=>res.data);
+                })
+                .catch((error)=>{
+                     if(error.response.status===401){
+                      Logout();
+
+                      }
+
+
+                });
+
+}
+
+
+
+export const getlinksbyCourseId = ({pageNo, courseId, getLinksData})=>{
+
+   axiosInstance.get(`course/getlinksbycourseId/${courseId}/?page=${pageNo}`).then((res) => {
+                        getLinksData(linksData=>res.data);
+                })
+                .catch((error)=>{
+                     if(error.response.status===401){
+                      Logout();
+
+                      }
+
+
+                });
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -926,6 +1145,66 @@ export const putcourseuser =({data})=>{
 
 
 
+export const addyoutubevideotocourse =({formData, courseId, props, setEditState})=>{
+
+
+        axiosInstance.put(`course/addyoutubevideo/${courseId}/`,{
+        "name":formData.name,
+        "link":formData.link,
+        "description": formData.description,
+
+
+                        })
+                        .then((res) => {
+		          setEditState("notSaving");		
+                          props.onPress();
+                       
+                          })
+
+                        .catch((error)=>{
+                             if(error.response.status===401){
+                              Logout();
+                            }
+
+                        });
+}
+
+
+
+export const addlinktocourse =({formData, courseId, props, setEditState})=>{
+
+
+        axiosInstance.put(`course/addlinktocourse/${courseId}/`,{
+        "name":formData.name,
+        "link":formData.link,
+        "description": formData.description,
+
+
+                        })
+                        .then((res) => {
+                          setEditState("notSaving");
+                          props.onPress();
+
+                          })
+
+                        .catch((error)=>{
+                             if(error.response.status===401){
+                              Logout();
+                            }
+
+                        });
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 export const putdashboardcourses =({data})=>{
@@ -1034,16 +1313,17 @@ export const putcourseenrollrequest =({courseId})=>{
 }
 
 
-export const putcourseenroll =({courseId, enrolledstudents})=>{
+export const putcourseenroll =({courseId, requesterId, setApproveState,  props})=>{
 
 
         axiosInstance.put(`course/enroll/${courseId}/`,{
-        "enrolledstudents":enrolledstudents,
+        "requesterId":requesterId,
+        		
 
         })
                         .then((res) => {
-                          console.log("hello", enrolledstudents);               
-
+                           setApproveState("notLoading");
+			   props.rerender();
                           })
 
                         .catch((error)=>{
@@ -1052,10 +1332,35 @@ export const putcourseenroll =({courseId, enrolledstudents})=>{
                             }
 
                         });
-
-
-
 }
+
+
+
+
+export const courseenrollrequestreject =({courseId, requesterId, setApproveState,  props})=>{
+
+
+        axiosInstance.put(`course/enrollrequestreject/${courseId}/`,{
+        "requesterId":requesterId,
+
+
+        })
+                        .then((res) => {
+                           setApproveState("notLoading");
+                           props.rerender();
+                          })
+
+                        .catch((error)=>{
+                             if(error.response.status===401){
+                              Logout();
+                            }
+
+                        });
+}
+
+
+
+
 
 
 
@@ -1402,7 +1707,38 @@ export const deletesectiondata =({sectionid })=>{
 
 
 
-export const createnewchapter =({ formData })=>{
+
+
+
+
+
+
+export const deletechapterdata =({chapterId ,props})=>{
+       console.log("chap Id: ", chapterId);
+
+        axiosInstance.delete(`syllabus/chapter/${chapterId}/`,{
+
+
+                        })
+                        .then((res) => {
+                        //console.log("chapter deleted---");
+                          props.rerender();
+
+                          })
+
+                        .catch((error)=>{
+                             if(error.response.status===401){
+                              Logout();
+                            }
+
+                        });
+
+
+}
+
+
+
+export const createnewchapter =({ formData, props })=>{
 
 
         axiosInstance.post(`syllabus/chapter/`,{
@@ -1418,7 +1754,8 @@ export const createnewchapter =({ formData })=>{
                         })
                         .then((res) => {
 
-                                console.log("chapter added", formData.syllabusId);
+				props.onPress();
+                                //console.log("chapter added", formData.syllabusId);
 
                           })
 
@@ -2170,6 +2507,7 @@ export const changepassword =({formData, setLoginState})=>{
 
 export const putuserprofile =({data, formData})=>{
 
+        console.log("formData", formData);
 
         axiosInstance.put('userprofilegetput/',{
         "email":formData.email,

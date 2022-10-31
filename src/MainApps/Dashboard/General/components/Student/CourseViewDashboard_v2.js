@@ -10,7 +10,7 @@ import {GiHazardSign} from 'react-icons/gi';
 import {putcourseenroll, getuserbyId, deletedashboardcourses, removecoursefromdashboard} from '../../../../../CommonApps/AllAPICalls';
 import coursePic from './coursePic.jpg';
 import EnrollForm from './Forms/EnrollForm';
-
+import {GiTeacher} from "react-icons/gi";
 
 import {MdDoubleArrow} from 'react-icons/md';
 
@@ -108,10 +108,14 @@ const CourseViewDashboard = (props)=>{
 
     const courseSwitchHandler = ()=>{
 
+
+      !props.Course.enrolled && alert("You are not enrolled is this course");
+
       localStorage.setItem('preferredCourseId', props.Course.id);
       //window.location.reload(false);
       props.rerender();
-      history.push('/dashboard/subject');	    
+      props.Course.enrolled && history.push('/course/summary');
+     	      
     }
 
 
@@ -122,7 +126,7 @@ const CourseViewDashboard = (props)=>{
      localStorage.setItem('preferredCourseId', props.Course.id);
      // moveToSubject();	 
      props.rerender();	    
-     history.push('/dashboard/subject');
+     history.push('/course/summary');
      
 
     }
@@ -293,19 +297,38 @@ return (
 	              </div>
 	        </div>
                 <div className={classes.courseNameDiv}> 
-                        { !props.Course.enrolled &&
+                        { !props.Course.enrolled && !props.Course.enrollementRequestSent &&
 	                <span className={classes.notEnrolledSign}> 
 	                   <GiHazardSign style={{color: 'red',marginRight:'10px',borderStyle:'none'}}/>
 	                   <span className={classes.toolTipText}> You are not enrolled in this course </span>
                         </span>
 		        }		
                       
-	                 { props.Course.enrolled &&
+                        { !props.Course.enrolled && props.Course.enrollementRequestSent &&
+                        <span className={classes.notEnrolledSign}>
+                           <BsFillCheckSquareFill style={{color: 'orange',marginRight:'10px',borderStyle:'none'}}/>
+                           <span className={classes.toolTipText}> You have sent enrollment request. Wait for response </span>
+                        </span>
+                        } 
+
+
+
+	                { props.Course.enrolled &&
 	                 <span className={classes.notEnrolledSign}>
                             <BsFillCheckSquareFill style={{color: 'green',marginRight:'10px',borderStyle:'none'}}/>
 	                    <span className={classes.toolTipText}> You are enrolled in this course </span>
                          </span>
-                         }
+                        }
+
+
+	                 
+
+
+
+
+
+
+
 	                <button style={{color:style.courseNameColor,
 					textDecoration:style.courseNameTextDecoration}}
 	                        className={classes.courseNameButton}
@@ -316,8 +339,9 @@ return (
 	        </div>
                 <div className={classes.middlePart}>  
 	              <div className={classes.middlePart_left}> 
-	                    <div className={classes.upcomingClassTitle}>Upcoming class  </div>
-	                    <div className={classes.upcomingClassTime}> 9:30am, Today  </div>
+	                    <div className={classes.upcomingClassTime}> 
+	                      <GiTeacher/> <span>9:30am, Today </span> 
+	                    </div>
 	                    
 	              </div>  
 

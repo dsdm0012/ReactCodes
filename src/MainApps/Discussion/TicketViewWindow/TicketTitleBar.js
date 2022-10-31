@@ -7,7 +7,10 @@ return(
 
 <div className={classes.ticketTitleBar}>
 
-<i> <span className={classes.ticketNumber}>CLM-{props.ticketId} </span>:<b> {props.data.title} </b></i>
+   <i> 
+	<span className={classes.ticketNumber}>Discussion-{props.ticketId}: </span>
+	<b> {props.data.title} </b>
+   </i>
 
 </div>
 

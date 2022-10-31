@@ -46,6 +46,7 @@ background: linear-gradient(to right, var(--sideNavBarBtnhoverColor) 90%, var(--
 .buttonText{
 color: var(--sideNavBarButtonTextColor);
 vertical-align: middle;
+font-weight: 400;
 }
 
 

@@ -1,36 +1,32 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, memo} from 'react'
 import classes from './CourseViewDashboard_v2.module.css';
-import {BsFillCheckSquareFill,BsThreeDotsVertical} from 'react-icons/bs';
+import {BsFillCheckSquareFill,BsThreeDotsVertical, BsCameraVideoFill,BsFillBasketFill} from 'react-icons/bs';
 import {IoMdNotificationsOutline} from 'react-icons/io';
 import { useHistory } from "react-router-dom";
 import {BsFillTrashFill, BsPeopleFill} from 'react-icons/bs';
-import {BiEdit} from 'react-icons/bi';
+import {BiEdit, BiVideoPlus} from 'react-icons/bi';
 import {putcourseenroll, getuserbyId, deletedashboardcourses,deleteacourse} from '../../../../../CommonApps/AllAPICalls';
-
+import {RiVideoAddFill} from 'react-icons/ri';
 import coursePic from './coursePic.jpg';
 import {MdDoubleArrow} from 'react-icons/md';
 import SelectScreen from './SelectScreen';
 
-import { useMediaPredicate } from "react-media-hook";
+//import { useMediaPredicate } from "react-media-hook";
+import {GiTeacher} from "react-icons/gi";
+
+import CourseCardDropDown from './CourseCardDropDown';
+import CourseEditForm from './Forms/CourseEditForm';
 
 
 
 
 const CourseViewDashboard = (props)=>{
 
+    console.log("course card rerendering");
 
-
-    const smallerThan1400px = useMediaPredicate("(max-width: 1400px )");
+    //const smallerThan1400px = useMediaPredicate("(max-width: 1400px )");
 
     let history = useHistory();
-    const [style,setStyle]=useState({
-          primary:'lightgrey',
-
-          courseNameColor:"black",
-          courseNameTextDecoration:"none"
-
-    });
-
 
     let selectedCourse = localStorage.getItem('preferredCourseId');
 
@@ -46,9 +42,6 @@ const CourseViewDashboard = (props)=>{
        // enrolledstudents.push(enrollId);
        // putcourseenroll({courseId, enrolledstudents});
     }
-
-
-
 
 
     const courseSwitchHandler = ()=>{
@@ -73,15 +66,8 @@ const CourseViewDashboard = (props)=>{
 
 
 
-
-
-
-
-
-
-
-
     const deleteCourseHandler=()=>{
+	console.log("delete handler recreated");    
        alert("Are you sure you want to delete the course?");
        let courseId = props.Course.id;
        deleteacourse({courseId, props});
@@ -89,24 +75,32 @@ const CourseViewDashboard = (props)=>{
 
 
 
-    const changeStyleOnMouseEnterHandler=()=>{
-      setStyle( {...style,  courseNameColor:"var(--themeColor)", courseNameTextDecoration:"underline"});
-    }
-
-
-   const changeStyleOnMouseLeaveHandler	=()=>{
-      setStyle( {...style,  courseNameColor:"black",courseNameTextDecoration:"none"});
-   }
 
 
    const [showDropDown, setShowDropDown] = useState(false);
 
    const showActionToolsHandler=()=>{
-     setShowDropDown(showDropDown=>!showDropDown);
-
+     setShowDropDown(true);
    }
 
 
+    const [showCourseEditForm, setShowCourseEditForm] = useState(false);
+
+    const showCourseEditFormHandler=()=>{     	    
+       setShowCourseEditForm(showCourseEditForm=>true);
+       setShowDropDown(showDropDown=>false);
+       //console.log("oho baby");	    
+    }
+
+
+
+    //console.log("showDropDown: ", showDropDown);
+   
+    const closeCourseEditForm=()=>{
+       
+       setShowCourseEditForm(false);
+       props.rerender();
+    }
 
 
 
@@ -117,8 +111,6 @@ return (
 
 
 <div className={classes.courseViewDashboard}  
-	onMouseEnter={changeStyleOnMouseEnterHandler} 
-	onMouseLeave={changeStyleOnMouseLeaveHandler}
 	>
 
   
@@ -132,41 +124,59 @@ return (
 	        <div className={classes.topBar1}>
 	              <div className={classes.topBar1_left}>
 	                    <span> {props.Course.designedFor} </span>
-	                    { !smallerThan1400px &&
+	                    {/* !smallerThan1400px &&*/}
 	                    <span> {props.Course.enrolled_students.length} Students</span>
-		            }		    
+		            		    
 	              </div>
 	              <div className={classes.topBar1_right}>  
                         <div className={classes.courseCode}> {props.Course.courseGlobalCode} </div> 
                         <div className={classes.notification}> <IoMdNotificationsOutline className={classes.notIcon}/> </div>
-                        <div className={classes.dotsButton} onClick={showActionToolsHandler}> 
-	                    <BsThreeDotsVertical/>
+                        <div className={classes.dotsButton} > 
+	                    <BsThreeDotsVertical className={classes.verticalDotsIcon} onClick={showActionToolsHandler}/>
+                            {
+                               showDropDown  &&
 
-	                    {
-			       showDropDown  &&	
-				<div className={classes.dropdownButtons}>
-				    <button type="button" className={classes.dropdownButton}> edit 
-				    </button>
-				    <button type="button" className={classes.dropdownButton} onClick={deleteCourseHandler}> delete
-				    </button>
-	                        </div>  
-			    }	    
+                                 <CourseCardDropDown setDropDown={setShowDropDown}
+                                                     deleteCourseHandler={deleteCourseHandler}
+                                                     showCourseEditFormHandler={showCourseEditFormHandler}
+                                                     />
+                            }
+
+
+
+                            {  showCourseEditForm && 
+					    <CourseEditForm onPress={closeCourseEditForm}
+				                            Course={props.Course}
+				                            userData={props.userData}
+					    />
+
+			    }
+
+
 	                </div>
+
+
+
+
+
+
 	              </div>
 	        </div>
                 <div className={classes.courseNameDiv}> 
-	                <button style={{color:style.courseNameColor,
-					textDecoration:style.courseNameTextDecoration}}
-	                        className={classes.courseNameButton}
-	                        onClick={courseSwitchHandler}
-	                       >
-	                       <b> {props.Course.courseShortName}</b>
-	                </button>  
+
+                         <button className={classes.courseNameButton}
+                                 onClick={courseSwitchHandler}
+                               >
+                               <b> {props.Course.courseShortName}</b>
+                         </button>
+
+
+
+
 	        </div>
                 <div className={classes.middlePart}>  
 	              <div className={classes.middlePart_left}> 
-	                    <div className={classes.upcomingClassTitle}>Upcoming class  </div>
-	                    <div className={classes.upcomingClassTime}> 9:30am, Today  </div>
+	                    <div className={classes.upcomingClassTime}><GiTeacher/> <span>9:30am, Today</span>  </div>
 	                    
 	              </div>  
 
@@ -188,7 +198,7 @@ return (
         
     
       <div className={classes.lowerPart}>
-           { !smallerThan1400px && 
+           {/* !smallerThan1400px &&*/} 
            <div className={classes.lowerPart_left}>
 	        <div className={classes.lowerPartTitle}><b>Course Progress</b> </div>
 	        <div className={classes.lowerPartInfo}> 
@@ -197,14 +207,14 @@ return (
 	             </div>
 	        </div>
 	   </div>
-           }
+           
 	   <div className={classes.lowerPart_middle}> 
 	        <div className={classes.lowerPartTitle}><b>Tools</b> </div>
                 <div className={classes.lowerPartInfo}> 
-                     <div className={classes.oneTool}> </div>
-	             <div className={classes.oneTool}> </div>
-                     <div className={classes.oneTool}> </div>
-	             <div className={classes.oneTool}> </div>
+                     <div className={classes.oneTool}> <RiVideoAddFill/> </div>
+	             <div className={classes.oneTool}> <BsCameraVideoFill/> </div>
+                     <div className={classes.oneTool}> <BsCameraVideoFill/> </div>
+	             <div className={classes.oneTool}> <BsFillBasketFill/> </div>
 	        </div>
 	   </div>
 	   <div className={classes.lowerPart_right}> 
@@ -228,4 +238,4 @@ return (
 
 }
 
-export default CourseViewDashboard;
+export default memo(CourseViewDashboard);

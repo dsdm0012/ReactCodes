@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import classes from "./TicketBoxContainer.module.css"
 import LeftUserBox from "./LeftUserBox";
-import {getalltickets} from '../../../CommonApps/AllAPICalls';
+import {getalltickets, getticketsbycourseid} from '../../../CommonApps/AllAPICalls';
 
 
 
@@ -11,50 +11,50 @@ import {getalltickets} from '../../../CommonApps/AllAPICalls';
 
 const TicketBoxContainer = (props) =>{
 
-
-const [data, setData ] = useState([
-    {
-        "id": 6,
-        "title": "GGGGG",
-        "author": 1,
-        "category": 1,
-        "excerpt": "cdcd",
-        "content": "adadfvdfv dc sd asdkad clkASD, ASDAS",
-        "status": "open",
-        "pstatus": "draft",
-        "priority": "high",
-        "resolution": "unresolved",
-        "created_at": "2021-12-22T11:48:10.381307Z"
-    }]);
+     const [allTicketData, getAllTicketData] = useState(null);
+     const [pageNo, setPageNo] = useState(1);
 
 
+     useEffect(()=>{
+        let courseId = props.selectedCourse[0].id;
+	getticketsbycourseid({courseId, getAllTicketData, pageNo});      
+ 
+     },[]);
 
-useEffect(() =>{
 
-    getalltickets({setData});
-
-  },[]);	
-
-
+    //console.log("Total No of tickets: ", allTicketData !==null ? allTicketData.count: "no data");
 
 
 
 return(
 
-<div className={classes.leftUserBoxContainer}>
+  <div className={classes.leftUserBoxContainer}>
+
+        { allTicketData !==null && allTicketData.count===0 &&
+          
+	    <div className={classes.noTicketMessage}>  There are no discussions in this course. </div>	
+
+        }
+
+        <div className={classes.totalNoOfTickets}>
+            <span>Total no of tickets: {  allTicketData !==null && <> {allTicketData.count}</>} </span>
+	</div>
 
 
+	{ allTicketData !==null && allTicketData.results.map((oneTicket,index)=>{
 
-	{data.map((postDetail,index)=>{
-
-               return <LeftUserBox key={index} userName={"CLM - "+postDetail.id} data={postDetail} onPress={()=>props.onPress(postDetail.id)}  />
+               return <LeftUserBox key={index} 
+		                   userName={"Discussion - "+oneTicket.id} 
+		                   oneTicket={oneTicket} 
+		                   onPress={()=>props.onPress(oneTicket.id)}
+			           />
 
 	   }
 
         )}
 
 
-</div>
+  </div>
 
 );
 

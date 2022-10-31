@@ -27,6 +27,7 @@ align-items: center;
 justify-content: space-between;
 cursor: pointer;
 color: green;
+padding: 7px;
 }
 
 .commenterButton:hover{
@@ -86,6 +87,7 @@ border-style: none;
 background-color: var(--ticketTextColor);
 border-radius: 3px;
 cursor: pointer;
+padding: 7px;
 }
 
 

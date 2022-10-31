@@ -57,7 +57,7 @@ function onStateChange(fn) {
 function start () {
  
 
-   
+    {/*   
     if (window.location.host === 'localhost:3000'){	
         client = new W3CWebSocket('ws://127.0.0.1:8000/ws/chat/class');
       }
@@ -76,8 +76,10 @@ function start () {
    if (window.location.host === 'app.diracai.com'){ 
        client = new W3CWebSocket('wss://app.diracai.com:8001/ws/chat/class/');
      }
+   */}
 
-
+  	
+   client = new W3CWebSocket('wss://app.diracai.com:8001/ws/chat/class/');
 
    
 
@@ -254,14 +256,15 @@ const ChatWindow = (props) =>{
    useEffect(()=>{
      const groupId=props.clickedGroupId;
      let pageno=pageNum;
-     getchatcomments({setChatCommentObj, groupId,pageno});
-     getchatgroupbyId({groupId, getChatGroupById});
+     console.log("groupId inside chatWindowTest: ", groupId); 	   
+     groupId !==0 && getchatcomments({setChatCommentObj, groupId,pageno});
+     groupId !==0 && getchatgroupbyId({groupId, getChatGroupById});
 
    },[props.clickedGroupId, props.userData.id,pageNum ]);
 
 
 
-    console.log("chatGroup: ", chatGroup);
+    //console.log("chatGroup: ", chatGroup);
 
 
 

@@ -6,50 +6,36 @@ import TicketViewWindow from './TicketViewWindow/TicketViewWindow';
 
 import {getticket} from '../../CommonApps/AllAPICalls';
 
-const TicketsContentDiv=()=>{
+const TicketsContentDiv=(props)=>{
 
 
-const [ticketId, setTicketId]=useState(1);
+   const [clickedTicketId, setTicketId]=useState(localStorage.getItem('clickedDiscussionId'));
 
-const [data, setData ] = useState(
-    {
-        "id": 6,
-        "title": "GGGGG",
-        "author": 1,
-        "category": 1,
-        "excerpt": "cdcd",
-        "content": "adadfvdfv dc sd asdkad clkASD, ASDAS",
-        "status": "open",
-        "pstatus": "draft",
-        "priority": "high",
-        "resolution": "unresolved",
-        "created_at": "2021-12-22T11:48:10.381307Z"
-    });
+   const [selectedTicket, setData ] = useState(null)
+
+   const [rerenderTicket, setRerenderTicket] = useState(false);
+
+    useEffect(() =>{
+      let ticketId=clickedTicketId;	    
+      getticket({ticketId, setData});        
+    },[clickedTicketId]);
 
 
 
 
+    const ticketClickHandler=(ticketId)=>{
+        setTicketId(ticketId);	
+        localStorage.setItem('clickedDiscussionId',ticketId );
+    }
 
 
+    const rerenderTicketHandler=()=>{
+      setRerenderTicket(rerenderTicket=>!rerenderTicket);
 
-useEffect(() =>
-
-{
-      getticket({ticketId, setData}); 
-       
-
-  },[ticketId]);
+    }
 
 
-
-
-const ticketClickHandler=(ticketId)=>{
-
-setTicketId(ticketId);
-}
-
-
-
+     //console.log("selectedTicket: ", selectedTicket);
 
 
 
@@ -63,11 +49,28 @@ return (
 
 	
 	
-     <TicketNavBar onPress={ticketClickHandler}/>
+     <TicketNavBar onPress={ticketClickHandler} 
+	           selectedCourse={props.selectedCourse}
+	           userData={props.userData}
+	           rerender={props.rerender}
+	           />
 	
-	
-     <TicketViewWindow ticketId={ticketId} data={data}/>
-      
+     { selectedTicket !==null &&
+     <TicketViewWindow ticketId={clickedTicketId} 
+	               selectedTicket={selectedTicket}
+	               selectedCourse={props.selectedCourse}
+	               rerender={props.rerender}
+	               userData={props.userData}
+	               />
+     }
+
+     { selectedTicket ===null &&
+		     
+        <div className={classes.noDiscussionSelected}> No discussion is selected </div>
+
+     }
+
+
 
   </div>
 

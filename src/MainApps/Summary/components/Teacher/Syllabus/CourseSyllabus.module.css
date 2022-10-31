@@ -87,7 +87,16 @@ margin: 10px;
 
 
 
+.sectionlist{
+counter-reset: item
+}
+
+
+
+
 ol { counter-reset: item }
+
+
 li{ 
 display: block; 
 border-width: 1px;
@@ -190,5 +199,44 @@ text-decoration: none;
 }
 
 
+
+.deleteChapterButton{
+float: right;
+border-style: none;
+background-color: lightgrey;
+padding: 5px;
+border-radius: 3px;
+font-size: 20px;
+color: grey;
+cursor: pointer;
+margin-left: 10px;
+}
+
+.topBarSyllabus{
+color: grey;
+display: flex;
+}
+
+.topBarSyllabus_button{
+border-style: none;
+color: white;
+background-color: #00aff0;
+padding: 5px;
+margin-left: 20px;
+border-radius: 3px;
+cursor: pointer;
+text-decoration: none;
+
+}
+
+.topBarSyllabus_button:hover{
+text-decoration: none;
+}
+
+
+.toggleSwitch{
+ margin-left: 20px;
+
+}
 
 

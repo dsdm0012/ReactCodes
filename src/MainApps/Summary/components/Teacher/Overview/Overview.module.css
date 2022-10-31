@@ -79,8 +79,25 @@ border-bottom: 4px solid lightgrey;
 
 
 
+.editDiv{
+width: 100%;
+border-style: none;
+height: 40px;
+}
 
 
+.editBasicInfoButton{
+float: right;
+background-color: orange;
+color: white;
+border-style: none;
+padding: 7px;
+border-radius: 5px;
+padding-left: 20px;
+padding-right: 20px;
+cursor: pointer;
+font-size: 1rem;
+}
 
 
 

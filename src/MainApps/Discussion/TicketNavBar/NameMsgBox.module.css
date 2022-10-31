@@ -18,12 +18,17 @@ font-size: calc( 0.25 * var(--headerHeight) );
 font-weight: lighter;
 text-align: left;
 color: var(--themeColor);
+font-weight: normal;
 }
 
 .lastMessage{
 position: relative;
 color: grey;
 text-align: left;
-
-
+border-style: none;
+height: 20px;
+white-space: nowrap;
+overflow-x: hidden;
+text-overflow: ellipsis;
+width:170px;
 }

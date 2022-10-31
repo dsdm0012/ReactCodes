@@ -19,7 +19,7 @@ import Settings from './MainApps/Account/Settings/Settings';
 import General from './MainApps/Dashboard/General/General';
 import Summary from './MainApps/Summary/Summary';
 //import News from './MainApps/Dashboard/News/News';
-import Syllabus from './MainApps/Syllabus/Syllabus';
+//import Syllabus from './MainApps/Syllabus/Syllabus';
 
 import VATChat from './MainApps/Chat/VATChat';
 import EMail from './MainApps/EMail/EMail';
@@ -182,7 +182,7 @@ function App() {
     
    
 
-   
+    
    const [userData,setData]=useState({
    "id": null,	   
    "dashboardcourses": [],
@@ -223,13 +223,14 @@ function App() {
 
 
 
+   
+
+   const [dashboardCourses, getDashboardCourses] = useState([]);
+		//useState(userData.id !==null? userData.dashboard_courses: []);
 
 
-   const [dashboardCourses, getDashboardCourses] = useState(userData.id !==null? userData.dashboard_courses: []);
 
-
-
-   //console.log("userData: ", userData); 
+   console.log("userData: ", userData); 
 
 
   
@@ -240,7 +241,12 @@ function App() {
     
 
     
-    <Header onPress={expandHandler}  selectedCourse={selectedCourse} userData={userData} dashboardCourses={userData.dashboard_courses}/> 
+    <Header onPress={expandHandler}  
+	    selectedCourse={selectedCourse} 
+	    userData={userData} 
+	    dashboardCourses={userData.dashboard_courses}
+	    rerender={rerenderHandler}
+	    /> 
   
     <SideToolBar toolBarWidth={sideNavBarWidth}/>
     
@@ -294,7 +300,7 @@ function App() {
 
 
 
-
+    
  
     <Switch>
 
@@ -331,11 +337,12 @@ function App() {
 	    sideNavBarWidth={sideNavBarWidth} 
 	    passMountInfo={setCourseMounted}  
 	    selectedCourse={selectedCourse}
-            userData={userData}	    
+            userData={userData}
+	    rerender={rerenderHandler}
 	/>
       </Route>
 
-
+      {/*
       <Route exact path='/course/syllabus' >
         <Syllabus
             sideNavBarWidth={sideNavBarWidth}
@@ -344,7 +351,7 @@ function App() {
             userData={userData}
         />
       </Route>
-
+      */}
 
 
       <Route exact path='/dashboard/generalchat' >
@@ -357,7 +364,7 @@ function App() {
 
 
 	 
-      <Route exact path='/messages/chat' >
+      <Route exact path='/course/chat' >
         <VATChat sideNavBarWidth={sideNavBarWidth} 
 	   passMountInfo={setMessagesMounted}  
 	   selectedCourse={selectedCourse}
@@ -381,6 +388,8 @@ function App() {
 	    passMountInfo={setDiscussionMounted}  
 	    selectedCourse={selectedCourse}
 	    userData={userData}
+	    rerender={rerenderHandler}
+	    
 	/>
       </Route>
 	 
@@ -511,7 +520,7 @@ function App() {
 
     </Switch>	  
 
-
+    
     
     
     </div>

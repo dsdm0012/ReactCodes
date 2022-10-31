@@ -1,14 +1,24 @@
+import React,{useState, CSSProperties} from 'react';
 import OutsideAlerter from "../UserHead/OutsideAlerter";
-
-
-
 import classes from './CourseEnrollmentRequest.module.css';
+import {putcourseenroll} from '../../../../CommonApps/AllAPICalls';
+import FadeLoader from "react-spinners/BeatLoader";
+import OneRequest from "./OneRequest";
+
+const override: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+  fontSize:"10px",
+};
+
+
+
 
 const CourseEnrollmentRequest=(props)=>{
 
 
 
-   
 
 
 
@@ -20,17 +30,26 @@ return (
 
         <div className={classes.allRequests}>  
 
-            <div className={classes.oneRequest}>      
-              <p className={classes.textBox1}>  
-	           <span className={classes.requesterName}> Mr. Shubham Panda </span>
-	           wants to enroll in your 
-	      </p>
-	      <p className={classes.textBox2}> Course: 100032</p>
-              <div className={classes.ApproveRejectBtnDiv}>
-                   <button type="button" className={classes.approveButton}> <b>Approve</b> </button>
-                   <button type="button" className={classes.rejectButton}> <b>Reject</b> </button>
-              </div>
-            </div>
+      { props.userData.id !==null && props.userData.courseenrollment_requests.length===0 &&
+      
+        <div className={classes.oneRequest} style={{color:'grey'}}> There are no active action items </div>
+      }
+
+
+
+       { props.userData.id !==null && props.userData.courseenrollment_requests.map((request,index)=>{
+
+
+
+	    return <OneRequest key={index} 
+	                       request={request}
+	                       rerender={props.rerender}
+		               />   
+
+         })
+
+      }
+
 
 
 

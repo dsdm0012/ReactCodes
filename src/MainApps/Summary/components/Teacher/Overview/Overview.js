@@ -1,4 +1,4 @@
-
+import React,{useState} from 'react';
 import classes from './Overview.module.css';
 
 import InstructorUnit from './InstructorUnit';
@@ -22,13 +22,42 @@ import {FcSalesPerformance} from 'react-icons/fc';
 
 import OneStudentCreditScore from './OneStudentCreditScore';
 
+import CourseEditForm from './Forms/CourseEditForm';
 
 
+const Overview=(props)=>{
 
-const Overview=()=>{
+
+  //console.log("overview rendering");
+
+   let monthMap={"01":"Jan","02":"Feb","03":"March",
+              "04":"April", "05":"May", "06":"June","07":"July",
+               "08":"Sept","09":"Oct", "10":"Oct","11":"Nov","12":"Dec"}
 
 
-console.log("overview rendering");
+   let startTime= props.selectedCourse[0].courseStartDate;
+   let endTime = props.selectedCourse[0].courseEndDate;
+
+   let startYear= startTime !==null? startTime.split("-").at(0):"N/A";
+   let startMonth= startTime !==null? monthMap[startTime.split("-").at(1)]:"N/A";
+   let startDay=startTime !==null? startTime.split("-").at(2):"N/A";	
+
+   let endYear= endTime !==null? endTime.split("-").at(0):"N/A";
+   let endMonth= endTime !==null? monthMap[endTime.split("-").at(1)]:"N/A";
+   let endDay=endTime !==null? endTime.split("-").at(2):"N/A";	
+
+   const [showCourseEditForm, setShowCourseEditForm] = useState(false);
+
+
+   const closeCourseEditForm=()=>{
+    setShowCourseEditForm(false);
+
+   }	
+
+  
+   const showCourseEditFormHandler=()=>{
+     setShowCourseEditForm(true);
+   }
 
 
 
@@ -37,59 +66,74 @@ return (
 <div className={classes.overview}>
 
      <div className={classes.instructorGrid}>
-        <InstructorUnit/>
+        <InstructorUnit selectedCourse={props.selectedCourse}/>
      </div>
- 
 
+     { showCourseEditForm &&
+         
+           <CourseEditForm onPress={closeCourseEditForm}
+                           Course={props.selectedCourse[0]}
+                           userData={props.userData}
+	                   rerender={props.rerender}
+	                   />
+     }
+
+
+
+     <div className={classes.editDiv}>	
+            <button type="button" className={classes.editBasicInfoButton} onClick={showCourseEditFormHandler}>
+	      Edit
+	    </button>
+     </div>
 
 
      <div className={classes.generalInfoGrid}>
 
           <InfoUnit 
 	         name="Institute" 
-	         value="Kalinga Institute of Industrial Technology, Bhubaneswar, Odisha"
+	         value={props.selectedCourse[0].instituteName}
 	         icon={GiDogHouse}
 	         />
 
           <InfoUnit
                   name="Designed for"
-                  value="Class-11"
+                  value={props.selectedCourse[0].designedFor}
 	          icon={FaHandPointRight}
                   />
 
            <InfoUnit
                    name="Subject"
-                   value="Physics"
+                   value={props.selectedCourse[0].subject}
                    icon={BsFillSquareFill}
                   />
 
 	 <InfoUnit
                   name="No. of Students"
-                  value="20"
+                  value={props.selectedCourse[0].enrolled_students.length}
 	          icon={BsPeopleFill}
                   />
       
           <InfoUnit
 	           name="Status"
-	           value="ongoing"
+	           value={props.selectedCourse[0].courseStatus}
 	           icon={GrStatusGoodSmall}
 	          />
 
           <InfoUnit
                    name="Institute code"
-                   value="CS223"
+                   value={props.selectedCourse[0].courseLocalCode}
 	           icon={FaBarcode}
                   />
 
           <InfoUnit
                    name="Duration"
-                   value="22/05/2022 to 20/10/2022"
+                   value={startDay+" "+startMonth+" "+startYear+" To "+ endDay+" "+endMonth+" "+endYear}
                    icon={FaCodiepie}
                   />
 
           <InfoUnit
                    name="Progress"
-                   value="40% complete"
+                   value="Not available"
                    icon={GiProgression}
                   />
 
@@ -101,19 +145,19 @@ return (
 
           <InfoUnit
                    name="Credit"
-                   value="100 marks"
+                   value={props.selectedCourse[0].coursecredit}
                    icon={FaRegCreditCard}
                   />
 
           <InfoUnit
                    name="No. of Exams"
-                   value="2"
+                   value="Not available"
                    icon={BsPenFill}
                   />
 
 	  <InfoUnit
                    name="Pending Assignments"
-                   value="1"
+                   value="Not available"
                    icon={BsUiChecksGrid}
                   />
 
@@ -126,7 +170,7 @@ return (
 
 
      <div className={classes.aboutTheCourse}>
-          <About icon={ImArrowRight}/>
+          <About icon={ImArrowRight} aboutText={props.selectedCourse[0].abouttheCourse}/>
      </div>
 
 

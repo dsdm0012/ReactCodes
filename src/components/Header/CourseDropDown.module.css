@@ -17,7 +17,11 @@ transition: height 1s;
 padding-bottom: 50px;
 /*max-height: 50px;
 overflow-y: auto;*/
+margin:auto;
+padding:20px;
 
+/*overflow-x: hidden;
+overflow-y:auto;*/
 }
 
 
@@ -75,7 +79,7 @@ color: var(--themeColor);
 
 
 .courseBox{
-width: 85%;
+width: 90%;
 height: 50px;
 background: #b8d1ff;
 border-radius: 4px;
@@ -83,16 +87,23 @@ border-style: none;
 border-width: 1px;
 border-color: #b8d1ff;
 color: var(--themeColor);
-}
-
-
-
-.courseBox i{
-height: 50%;
-font-size: 10px;
 display: flex;
+flex-direction: column;
 align-items: center;
+margin: auto;
+justify-content: center;
+margin-bottom: 10px;
 }
+
+
+.courseNameBox{
+width: 70%;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow:hidden;
+}
+
+
 
 
 .courseBox:hover{
@@ -105,4 +116,12 @@ cursor: pointer;
 
 
 
+.topGapBox{
+height: 50px;
+width: 100%;
+background-color: white;
+color: grey;
+font-weight: bold;
+margin-bottom: 10px;
 
+}

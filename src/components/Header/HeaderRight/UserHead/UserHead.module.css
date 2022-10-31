@@ -67,7 +67,7 @@
 .UserFirstName{
 
 font-style: normal;
-font-weight: lighter;
+font-weight: 400;
 color: white;
 font-size:calc( 0.7 * var(--headerFontSize) );
 overflow: hidden;

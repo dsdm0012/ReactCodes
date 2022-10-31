@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useRef} from "react";
 import classes from "../CommonAppUtilities/MainAppContainer.module.css"
 import TopInfoBarTickets from './TopInfoBarTickets';
-import TopTitleBar from '../CommonAppUtilities/TopTitleBar';
+import TopTitleBar from './TopTitleBar';
 import TicketsContentDiv from './TicketsContentDiv';
 import Separator from "../CommonAppUtilities/Separator";
 
@@ -45,7 +45,7 @@ const Tickets=(props)=>{
 
 
 
-   let title="Tickets"	
+   let title="Discussion"	
    let mainAppContainerStyle={left:sideNavBarWidth, width:mainAppContainerWidth}
    const infoBarActiveButtonColor = {color: 'white',backgroundColor: '#919191'}
 
@@ -58,15 +58,15 @@ const Tickets=(props)=>{
    return(
 
       <div className={classes.mainAppContainer} style={mainAppContainerStyle} >
-      <TopInfoBarTickets styles={infoBarActiveButtonColor} selectedCourse={props.selectedCourse}/>
-
-      <Separator/>
-
-      <TopTitleBar title={title}/>
-
-      <TicketsContentDiv/>
-
-
+	{props.selectedCourse !==null && props.selectedCourse.length !==0 &&  <> 
+        <TopInfoBarTickets styles={infoBarActiveButtonColor} selectedCourse={props.selectedCourse}/>
+        <Separator/>
+        <TicketsContentDiv selectedCourse={props.selectedCourse} 
+		           userData={props.userData}
+		           rerender={props.rerender}
+		           />
+        </>		
+        }
       </div>
 
    );

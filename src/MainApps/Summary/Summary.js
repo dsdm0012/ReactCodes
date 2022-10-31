@@ -49,7 +49,7 @@ const Subject=(props)=>{
    const infoBarActiveButtonColor = {color: 'white',backgroundColor: '#919191'}
 
 
-
+   //console.log("selected Course: ", props.selectedCourse);
  
 
 
@@ -64,7 +64,9 @@ const Subject=(props)=>{
       <TopTitleBar title={title}/>
         */}
 
-      <SummaryContentDiv selectedCourse={props.selectedCourse}/>
+      <SummaryContentDiv selectedCourse={props.selectedCourse} 
+	                 rerender={props.rerender}
+	                 />
 
       </div>
 

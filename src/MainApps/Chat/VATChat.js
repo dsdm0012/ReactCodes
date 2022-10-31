@@ -5,8 +5,6 @@ import TopInfoBarGeneral from '../Dashboard/General/TopInfoBarGeneral';
 import Separator from "../CommonAppUtilities/Separator";
 
 
-
-
 //import TopTitleBar from '../../CommonAppUtilities/TopTitleBar';
 import VATChatContentDiv from './VATChatContentDiv';
 
@@ -63,19 +61,19 @@ const VATChat=(props)=>{
    return(
 
       <div className={classes.mainAppContainer} style={mainAppContainerStyle} >
-	     {/*
-	        <TopInfoBarVATChat styles={infoBarActiveButtonColor} selectedCourse={props.selectedCourse}/>
-         
-               <TopTitleBar title={title}/>
-             */}
+	  {props.selectedCourse !==null &&  
+	  <TopInfoBarVATChat styles={infoBarActiveButtonColor} selectedCourse={props.selectedCourse}/>
+	  }
 
-          <TopInfoBarGeneral/>      
+	  { props.selectedCourse ===null && 
+          <TopInfoBarGeneral/>     
+	  }		   
 
           <Separator/>
-
-
       	   
-          <VATChatContentDiv userData={props.userData}/>
+          <VATChatContentDiv userData={props.userData}
+	                     selectedCourse={props.selectedCourse}
+	                     />
        
 
       </div>

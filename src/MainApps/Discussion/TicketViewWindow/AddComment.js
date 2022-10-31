@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import classes from "./AddComment.module.css";
 import {BsPlus} from "react-icons/bs";
-import {postcomment,getuser} from '../../../CommonApps/AllAPICalls';
+import {postticketcomment,getuser} from '../../../CommonApps/AllAPICalls';
 
 
 
@@ -61,10 +61,13 @@ const AddComment = (props) =>{
   const comment=formData.comment;
 
   const handleSubmit = (e) => {
-        e.preventDefault();	  
-        postcomment({ticketId,userId,comment});
+        e.preventDefault();	 
+	//console.log("ticket Id", ticketId);
+	//console.log("userId: ", userId);
+	//console.log("comment: ", comment);
+	postticketcomment({ticketId,userId,comment});
         showTextBox(false);
-	props.newCommentAdded(true);  
+	props.newCommentAdded(current=>!current);  
   }
 
 

@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import classes from "./LeftUserBoxContainer.module.css"
 import LeftUserBox from "./LeftUserBox";
 //import classimg from '../../../../images/groupImage.png';
-import {getchatgroups, getpersonalgeneralchatgroups} from '../../../CommonApps/AllAPICalls';
+import {getchatgroups, getpersonalgeneralchatgroups,getcoursechatgroups} from '../../../CommonApps/AllAPICalls';
 
 
 
@@ -13,12 +13,16 @@ const LeftUserBoxContainer = (props) =>{
 
 
     const [chatGroups, getChatGroups]= useState(null);
+    const [courseChatGroups, getCourseChatGroups] = useState(null);
 
     const [rerender, setRerender] = useState(false);
 
 
     useEffect(()=>{
+       let courseId = props.selectedCourse !==null ? props.selectedCourse[0].id:null;    
        getpersonalgeneralchatgroups({getChatGroups});
+	    
+       courseId !==null && getcoursechatgroups({getCourseChatGroups, courseId});
 
     },[props.userData,rerender]);
 
@@ -31,6 +35,9 @@ const LeftUserBoxContainer = (props) =>{
      //setRerender(rerender=>!rerender); 
     }
 
+
+    
+     //console.log("courseChatGroups: ", courseChatGroups);	
 
 
 return(
@@ -91,7 +98,7 @@ return(
       */}
 
 
-       { chatGroups !==null && chatGroups.results !==null && 
+       { props.selectedCourse ===null && chatGroups !==null && chatGroups.results !==null && 
           chatGroups.results.map((group, index)=>{
                
 	      if(group.groupType==="oneoone" && group.groupuserObjects.length === 2){
@@ -104,6 +111,26 @@ return(
 	      }
 
           })
+
+       }
+
+
+       {  
+
+         props.selectedCourse !==null && courseChatGroups !==null && courseChatGroups.results !==null &&
+          courseChatGroups.results.map((group, index)=>{
+
+              if(group.groupType==="oneoone" && group.groupuserObjects.length === 2){
+
+               return <LeftUserBox key={index}
+                         userData={props.userData}
+                         group={group}
+                         switchGroupHandler={switchChatGroupHandler}
+                     />
+              }
+
+          })
+
 
        }
 

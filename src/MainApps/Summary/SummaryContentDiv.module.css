@@ -11,9 +11,26 @@ height: calc( 100vh - calc( 1.86  * var(--headerHeight) ) );
 /*display: flex;
 flex-direction:column;
 align-items: center;*/
-overflow-y: scroll;
+overflow-y: auto;
 overflow-x: hidden;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

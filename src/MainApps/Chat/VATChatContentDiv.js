@@ -38,12 +38,13 @@ return (
 
  <div className={classes.contentDiv}>
 
-
+   
    <ChatNavBar userData={props.userData} 
-	       switchGroupHandler={switchGroupHandler} 
+	       switchGroupHandler={switchGroupHandler}
+	       selectedCourse={props.selectedCourse}
 	/>	
 
-    	
+	 	
    <ChatWindow userData={props.userData}
 	       clickedGroupId={clickedGroupId}   
 	        />

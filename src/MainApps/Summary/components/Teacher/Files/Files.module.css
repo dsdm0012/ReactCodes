@@ -4,7 +4,7 @@
 width: 85%;
 margin: auto;
 margin-top:50px;
-border-style: solid;
+border-style: none;
 margin-bottom: 200px;
 height: 1000px;
 }
@@ -13,7 +13,7 @@ height: 1000px;
 
 .toolsDiv{
 width: 100%;
-border-style: solid;
+border-style: none;
 height: 50px;
 margin-bottom: 100px;
 }

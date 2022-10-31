@@ -1,26 +1,51 @@
-
+import React,{useState, useEffect} from 'react';
 
 import classes from './Links.module.css';
+import CourseAddLinkForm from './Forms/CourseAddLinkForm';
 
-const Links=()=>{
-
-
-console.log("Links Rendering");
+import {getlinksbyCourseId} from '../../../../../CommonApps/AllAPICalls';
 
 
-  const addLinkHandler=()=>{
 
 
-  }
+const Links=(props)=>{
 
 
-  const openLinkInNewTabHandler=()=>{
+   console.log("Links Rendering");
 
-   let meetingLink = "https://www.tifr.res.in/";
+   const [showAddLinkForm, setShowAddLinkForm] = useState(false);
+
+   const [linksData, getLinksData]=useState(null);
+   const [pageNo , setPageNo] = useState(1);
+
+
+    useEffect(()=>{
+    console.log("new pageNo", pageNo);
+    let courseId = props.selectedCourse[0].id;
+    getlinksbyCourseId({ pageNo, courseId, getLinksData});
+
+   },[props.userData, pageNo]);
+
+
+
+   const addLinkHandler=()=>{
+       setShowAddLinkForm(true);	   
+   }
+
+
+   const openLinkInNewTabHandler=({link_})=>{
+       let meetingLink = link_;
        window.open(meetingLink, "_blank") 
+   }
 
-  }
 
+   const closeFormHandler=()=>{
+    setShowAddLinkForm(false);
+    props.rerender();
+   }
+
+
+    console.log("linksData: ", linksData);
 
 
 
@@ -30,6 +55,16 @@ return (
 
     <div className={classes.toolsDiv}>
 
+        { showAddLinkForm &&
+             <CourseAddLinkForm userData={props.userData}
+                    Course={props.selectedCourse[0]}
+                    rerender={props.rerender}
+                    onPress={closeFormHandler}
+                    />
+        }
+
+
+
          <button type="button" className={classes.uploadButton} onClick={addLinkHandler}> + Add a link </button>
 
     </div>
@@ -38,26 +73,34 @@ return (
 
 
   <ol>
-     <li>
-	<button type="button" className={classes.linkBoxContainer} onClick={openLinkInNewTabHandler}>
-        Tata Institute of Fundamental Research, Mumbai
-        </button>
-     </li>
+
+     { linksData !==null && linksData.results.map((linkObj, index)=>{
+
+                let link_=linkObj.link;
+                return <li key={index}>
+                          <button type="button" className={classes.linkBoxContainer} onClick={()=>openLinkInNewTabHandler({link_})}>
+		                 {linkObj.name}
+                          </button>
+		          <div style={{color: 'grey', marginLeft:'30px'}}>  {linkObj.description}</div>
+
+                        </li>
+           
 
 
-     <li>
-	<button type="button" className={classes.linkBoxContainer} onClick={openLinkInNewTabHandler}>
-        Indian Institute of Technology, Delhi
-       </button>
-     </li>
 
 
-     <li>
-	<button type="button" className={classes.linkBoxContainer} onClick={openLinkInNewTabHandler}>
-        Institute of Science Education and Research, Pune
-       </button>
+               })
 
-     </li>
+     }
+
+
+
+
+
+
+
+
+
   </ol>	
 
     

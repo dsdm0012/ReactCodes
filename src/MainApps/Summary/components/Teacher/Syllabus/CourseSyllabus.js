@@ -1,17 +1,19 @@
 import React,{useState,useEffect} from 'react';
 import classes from './CourseSyllabus.module.css';
 import {getsyllabusfromId,
-	putsectiondata,createnewsection,
+	putsectiondata,createnewsection,deletechapterdata,
 	deletesectiondata} from '../../../../../CommonApps/AllAPICalls.js';
 
 import AddChapterButton  from './AddChapterButton';
 import SectionIter from './SectionIter';
 import AddSectionButton from './AddSectionButton';
+import {BsTrash} from 'react-icons/bs';
+import {BiEdit} from 'react-icons/bi';
 
 
 import ChapterCreationForm from './ChapterCreationForm';
 
-
+import Switch from "react-switch";
 
 
 
@@ -36,7 +38,7 @@ const CourseSyllabus=(props)=>{
     },[ syllabusId,rerender]);
 
 
-    //console.log("syllabus Data: ", syllabusData);
+    console.log("syllabus Data: ", syllabusData);
 
 
     /*const [showSyllabus, changeShowSyllabus]=useState(true);
@@ -199,32 +201,56 @@ const CourseSyllabus=(props)=>{
 
     const closeChapterFormHandler=()=>{
      setShowChapterCreateForm(false);
+     props.rerender();
+    }
+
+
+    const deleteChapterHandler=({chapterId})=>{
+          console.log("chapterId: ", chapterId);
+	    
+	  deletechapterdata({chapterId, props});  
 
     }
 
 
 
+    const [editMode, setEditMode] = useState(false);
+
+
+   const handleChangeEditMode=()=>{
+    setEditMode(editMode=>!editMode);
+   }
 
 
     //console.log("showSectionEdit.chapterId:   ",showSectionEdit.chapterId,'---', showSectionEdit.sectionId);
-
-
-
+    //for (const [sindex, section] of SortedSections.entries())
+    //let SortedSections = new Map([...sections.entries()].sort((a,b)=> a.id< b.id));
 
 return (
 
 <div className={classes.courseSyllabus}>
 
-        <i> COURSE SYLLABUS:  </i>
+        <div className={classes.topBarSyllabus}> 
+	      <span>COURSE SYLLABUS</span>
+	      <button type="button" className={classes.topBarSyllabus_button}>Reset To default </button>
+	      <button type="button" className={classes.topBarSyllabus_button}>Import a syllabus </button>
+	      <div className={classes.toggleSwitch}>
+                {<Switch onChange={handleChangeEditMode} checked={editMode} />}
+              </div>
+	</div>
 
 	{ syllabusData.length !==null &&<div className={classes.syllabusContent}>
 
 	 
 
         <ol className={classes.chapterNames}>
-
+                       { editMode && 
                        <AddChapterButton addChapterHandler={addChapterHandler}/>
+                       }
+
 		       {showChapterCreateForm && <ChapterCreationForm onPress={closeChapterFormHandler} syllabusData={syllabusData}/>}
+
+
 
 
 
@@ -233,11 +259,25 @@ return (
             syllabusData.chapters.map((chapter,index)=>{
 
 		  let chapterId = chapter.id;
+                  let sections = chapter.sections;
 
-         	  return <li key={index} > <b>{chapter.name}</b> 
-			    <ol>
+                
 
-                              {chapter.sections.map((section, sindex)=>{
+
+
+         	  return <li key={index} > <b>{chapter.name}</b>
+                           { editMode && <>
+			    <button type="button" className={classes.deleteChapterButton}> <BiEdit/> </button>
+			    <button type="button" className={classes.deleteChapterButton} onClick={()=>deleteChapterHandler({chapterId})}> 
+			          <BsTrash/> 
+			    </button>
+			    </>	   
+                            }
+			    <ol className={classes.sectionlist}>
+
+                              {
+
+				   sections.map((section, sindex)=>{
 				       //let sectionId = section.id;
                                        let csname='c'+chapter.id+'s'+section.id;
 
@@ -254,17 +294,18 @@ return (
 				            handleChange = {handleChange}
 				            sectionText ={sectionText}
                                             sindex={sindex}
+					    editMode={editMode}
 					   />  
 				     	      
-			              }
-			        )
-
+			                   }
+				   )
 
 			      }
 
 
 
-		             {<AddSectionButton addSectionHandler={(event)=>addSectionHandler({chapterId})}/>}
+		             { editMode &&
+				     <AddSectionButton addSectionHandler={(event)=>addSectionHandler({chapterId})}/>}
 
 
 		            </ol>

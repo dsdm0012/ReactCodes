@@ -1,11 +1,18 @@
 
 
 
-   let basewebURL;
-   let meetingbasewebURL;
+let basewebURL;
+let meetingbasewebURL;
+
+
+
+
 
    basewebURL="https://webapp.diracai.com";
    meetingbasewebURL=basewebURL;
+
+
+
 
 
 

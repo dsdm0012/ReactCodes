@@ -1,3 +1,14 @@
+.notificationItemsParentDiv{
+ background-color: var(--themeColor);
+ border-style: none;
+ z-index: 9999;
+ margin-left: 20px;
+}
+
+
+
+
+
 
 .UsersIcon{
 
@@ -25,7 +36,6 @@
     background-color: var(--themeColor);
     vertical-align: middle;
     cursor:pointer;
-    margin-left: 20px;
     display:flex;
     align-items: center;
     justify-content: center;

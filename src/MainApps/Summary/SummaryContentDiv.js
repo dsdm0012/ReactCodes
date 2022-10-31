@@ -1,4 +1,4 @@
-import React,{useState,useCallback} from 'react';
+import React,{useState,useCallback, useRef, useEffect} from 'react';
 import classes from './SummaryContentDiv.module.css';
 import base from '../CommonAppUtilities/AppContentDiv.module.css';
 
@@ -67,13 +67,47 @@ const SummaryContentDiv=(props)=>{
 	 setToolBox4PageMounted(false);
      },[]);
 
-	
-     
 
 
 
 
+      const [reachedBottom, setReachedBottom] = useState(false);
+      const [reachedTop, setReachedTop] = useState(false);
 
+      const [videoPageNo, setVideoPageNo] = useState(1);
+
+
+      const listInnerRef = useRef();
+
+      const onScrollHandler=()=>{
+        console.log("on scroll handler");
+
+          if(listInnerRef.current) {
+                const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+                if (scrollTop + clientHeight === scrollHeight) {
+                      console.log("reached bottom");
+                      //props.loadDownHandler();
+		       setReachedBottom(reachedBottom=>!reachedBottom);
+                }
+
+                if(scrollTop===0){
+                      console.log("reached top");
+                      setReachedTop(reachedTop=>!reachedTop);
+                }
+
+          }
+      }
+
+    {/*	
+      const bottomEndRef = useRef(null);
+      const scrollToBottom = () => {
+        bottomEndRef.current?.scrollIntoView({ behavior: "smooth" })
+      }
+    
+      useEffect(() => {
+        scrollToBottom();
+      }, [videoPageNo]);
+   */}
 
 
 
@@ -81,41 +115,15 @@ const SummaryContentDiv=(props)=>{
 return (
 
 <div className={base.appContentDiv}>
- <div className={classes.contentDiv}>
+ <div className={classes.contentDiv} 
+        onScroll={onScrollHandler}
+	ref={listInnerRef}
+	>
 
-  <div className={base.pwdAppDirectory}> <i className={base.pwdAppDirectoryText}> </i>   </div>
+     <div className={base.pwdAppDirectory}> <i className={base.pwdAppDirectoryText}> </i>   </div>
 
-   {/*
-  <div className={base.pwdAppDirectory}> <i className={base.pwdAppDirectoryText}>Dashboard / Subject </i>   </div>
-   */}
-   {/*props.selectedCourse.length===0 && 
-
-    <div className={classes.noCourseSelectedWarning}> <i> <h2>No Course Selected</h2></i> </div>
-   */}
-  
-   {/*
-
-    props.selectedCourse.length>0 &&
-
-    <>		   
-    <CourseTitleBar Course={Course1} selectedCourse= {props.selectedCourse} /> 
-  
-    <InstructorBar selectedCourse={props.selectedCourse} />
-
-    <InstituteBar  selectedCourse={props.selectedCourse} />
-
-    <CourseDurationBar selectedCourse={props.selectedCourse} /> 
-
-    <DesignedFor selectedCourse={props.selectedCourse} /> 
-
-    <AboutTheCourse selectedCourse={props.selectedCourse} /> 
-  
-    <CourseSecToggleBar selectedCourse={props.selectedCourse} /> 
-   
-   </>
-  */}
-
-                     <TopToolBarSummary
+	 
+              <TopToolBarSummary
 	                       userData = {props.userData}
                                onPress= {props.rerender}
                                showToolBox1PageContent = {showToolBox1PageContentHandler}
@@ -130,31 +138,47 @@ return (
 	                       toolBox5PageMounted = {toolBox5PageMounted}
                                selectedCourse = {props.selectedCourse}
                                />
+              
+
+     { toolBox1PageMounted && props.selectedCourse !==null &&
+         <CourseOverview selectedCourse={props.selectedCourse}
+	           userData={props.userData}
+	           rerender={props.rerender}
+	           />
+     }
+
+     { toolBox2PageMounted && props.selectedCourse !==null &&
+        <Syllabus selectedCourse={props.selectedCourse}
+	       rerender={props.rerender}
+		   />
+     }
 
 
-   { toolBox1PageMounted &&
-   <CourseOverview/>
-   }
+     { toolBox3PageMounted  && props.selectedCourse !==null &&
+ 
+        <Videos selectedCourse = {props.selectedCourse}
+	     userData = {props.userData}
+	     rerender = {props.rerender}
+	     reachedBottom={reachedBottom}
+	     reachedTop={reachedTop}
+	     setVideoPageNo={setVideoPageNo}
+		   />
 
-   { toolBox2PageMounted && props.selectedCourse !==null &&
-     <Syllabus selectedCourse={props.selectedCourse}/>
-   }
 
+     }
 
-   { toolBox3PageMounted  && props.selectedCourse !==null &&
+     { toolBox4PageMounted && props.selectedCourse !==null &&
 
-     <Videos/>
-   }
+       <CourseFiles/>
+     }
 
-   { toolBox4PageMounted && props.selectedCourse !==null &&
+     { toolBox5PageMounted && props.selectedCourse !==null &&
 
-   <CourseFiles/>
-   }
-
-  { toolBox5PageMounted && props.selectedCourse !==null &&
-
-   <CourseLinks/>
-  }
+      <CourseLinks  selectedCourse = {props.selectedCourse}
+             userData = {props.userData}
+             rerender = {props.rerender}
+	     />
+     }
 
 
 

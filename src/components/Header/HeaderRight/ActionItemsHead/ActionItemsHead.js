@@ -9,7 +9,7 @@ import CourseEnrollmentRequest from './CourseEnrollmentRequest';
 const ActionItemHead =(props)=>{
 
 
-    const [notificationNum, setNotificationNum] = useState("0");
+    let notificationNum = props.userData.id !==null? props.userData.courseenrollment_requests.length:"0";
 
     const [dropDown, setDropDown] = useState(false);
 
@@ -46,10 +46,9 @@ const ActionItemHead =(props)=>{
 
 
 
-    console.log("enroll_requests: ", props.userData);
+    //console.log("enroll_requests: ", props.userData.id !==null? props.userData.courseenrollment_requests.length:"nulllllllllll");
 
-
-    //let numNot=props.userData !==null && props.userData.courseenrollment_requests !==null ? props.userData.courseenrollment_requests.length: "0";	
+     //console.log("notificationNum: ", typeof(notificationNum));
 
 
 return (
@@ -63,13 +62,16 @@ return (
 	 style={styles} 
       >
          <FaUsers className={classes.UsersIcon} style={styles}/>
-	 {/* numNot !=="0" &&
-            <i className={classes.alertMessage}><b>3</b></i> 
-         */}		 
+	 { notificationNum !==0 &&
+            <i className={classes.alertMessage}><b>{notificationNum}</b></i> 
+         }		 
       </button>
 
 	{ dropDown &&
-	<CourseEnrollmentRequest  setDropDown={setDropDown}/>
+	<CourseEnrollmentRequest  setDropDown={setDropDown} 
+		                  userData={props.userData}
+		                  rerender={props.rerender}
+		                  />
         }
 
 

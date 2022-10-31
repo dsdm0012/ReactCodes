@@ -1,7 +1,9 @@
-import React,{useState} from 'react';
+import React,{useState, memo} from 'react';
 import classes from './CoursesGridContainer.module.css';
 import CourseViewDashboard from './CourseViewDashboard_v2';
-import CreateCourseForm from './CourseCreate/CreateCourseForm';
+import CreateCourseForm from './Forms/CreateCourseForm';
+
+
 
 const CoursesGridContainer =(props)=>{
 
@@ -40,11 +42,18 @@ return (
 
 	{props.courseData.map((course,index)=>{
 
-               return <CourseViewDashboard key={index} Course={course} userData={props.userData} rerender={props.rerender} />
+               return <CourseViewDashboard key={index} 
+		                           Course={course} 
+		                           rerender={props.rerender}
+		                           userData={props.userData}
+			                   />
 
            }
 
         )}
+
+
+
 
 
         {  props.courseData.length ===0 &&
@@ -67,5 +76,5 @@ return (
 
 }
 
-export default CoursesGridContainer;
+export default memo(CoursesGridContainer);
 

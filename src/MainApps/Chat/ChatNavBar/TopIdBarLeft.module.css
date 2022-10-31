@@ -17,7 +17,7 @@ justify-content: space-between;
 position: relative;
 left: calc( 0.20 * var(--headerHeight) );
 display: flex;
-
+margin-left: 10px;
 
 }
 

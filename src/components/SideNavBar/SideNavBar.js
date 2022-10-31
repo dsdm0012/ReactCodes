@@ -324,7 +324,7 @@ const SideNavBar=(props)=>{
 
 
    const messagesHandler=()=>{
-   history.push('/messages/chat');
+   history.push('/course/chat');
    }
 
    const classHandler=()=>{

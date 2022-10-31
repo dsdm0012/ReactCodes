@@ -8,9 +8,8 @@ import { useHistory } from "react-router-dom";
 import QuickMeetingPage from './QuickMeetingPage';
 import SideNavBarButtonQMeeting from './SideNavBarButtonQMeeting';
 
-import {FaTools} from 'react-icons/fa';
+import {FaTools,FaExternalLinkAlt} from 'react-icons/fa';
 import { useMediaPredicate } from "react-media-hook";
-
 
 
 
@@ -351,6 +350,18 @@ return (
          name="Utility"
          buttonColor={{background:inActivebuttonBkgColor,borderStyle:'solid',borderColor:'grey',color:inActivebuttonColor }}
          />
+
+
+  <SideNavBarButton onPress={utilityHandler}
+         icon={FaExternalLinkAlt}
+         name="Useful links"
+         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'solid',borderColor:'grey',color:inActivebuttonColor }}
+         />
+
+
+
+
+
 
 
  

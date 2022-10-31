@@ -6,11 +6,14 @@ import {AiOutlineLink} from 'react-icons/ai';
 
 import OneFile from './OneFile';
 
+
+
+
 const Files=()=>{
 
 
-console.log("Files rendeering ");
- const [showAddFileOptions, setShowAddFileOptions] = useState(false);
+    console.log("Files rendeering ");
+    const [showAddFileOptions, setShowAddFileOptions] = useState(false);
 
 
     const addFileHandler=()=>{
@@ -58,27 +61,6 @@ return (
 	<OneFile/>
 	<OneFile/>
    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

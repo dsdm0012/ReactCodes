@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './OneVideoBox.module.css';
 import ReactPlayer from 'react-player';
 
-const OneVideoBox=()=>{
+const OneVideoBox=(props)=>{
 
 
 return (
@@ -19,15 +19,15 @@ return (
 	className={classes.iframestyle}
       />
       */}
-     <ReactPlayer url="https://www.youtube.com/watch?v=a8LPqp47Nps" width="100%" height="100%" controls={true} />
+     <ReactPlayer url={props.video.link} width="100%" height="100%" controls={true} />
 
 
 
    
    <div className={classes.videoInfoBox}>
  
-      <div> <b>Class-8: Laws of Motion</b></div>
-      <div style={{color: "grey"}}> by Mr. Ipsit Panda</div>
+      <div> <b>{props.video.name}</b></div>
+      <div style={{color: "grey"}}> {props.video.description}</div>
       
 
    </div>

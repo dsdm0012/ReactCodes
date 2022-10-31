@@ -30,10 +30,11 @@ return(
 
 
   <div className={classes.userImageIcon}>
+    {/*	
     <button type="button" onClick={backToDashboardHandler} className={classes.backButtonToDash} > 
 	<IoMdArrowRoundBack className={classes.backIcon}/>
     </button>
-
+    */}
     <img className={classes.userImage} src={imageurl} alt='chatProfileImage' />
 
   </div>
