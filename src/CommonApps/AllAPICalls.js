@@ -417,9 +417,6 @@ axiosInstance.get(`getcoursechatgroups/${courseId}/`).then((res) => {
 
                 });
 
-
-
-
 }
 
 
@@ -1791,7 +1788,7 @@ axiosInstance.get(`syllabus/chapternumber/`).then((res) => {
 
 
 
-export const createnewclass =({ formDataSingleClass })=>{
+export const createnewclass =({ formDataSingleClass, props })=>{
 
 
         axiosInstance.post(`class/all/`,{
@@ -1809,7 +1806,7 @@ export const createnewclass =({ formDataSingleClass })=>{
 
                         })
                         .then((res) => {
-
+                                 props.onPress();
                                 console.log("class added");
 
                           })

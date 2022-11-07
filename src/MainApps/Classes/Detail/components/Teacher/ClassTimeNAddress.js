@@ -34,7 +34,7 @@ return (
      <i>Room No. 27A, Dogra Hall</i>
      <i className={classes.meetingLinki}>Meeting Link: <button className={classes.copyMeetingLink}>Copy <BsLink45Deg/> </button></i> 	
      <button className={classes.goLiveButton} onClick={joinClassHandler}> 
-	<h2>Go Live</h2>
+	<h2>Join Class</h2>
      </button>
 
    </div>

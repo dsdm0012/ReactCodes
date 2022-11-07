@@ -1,9 +1,9 @@
 
 .mainAppContainer{
 position: relative;
-background-color: #E8E8E8;
+/*background-color: red;#E8E8E8;*/
 width: calc( 100% - var(--sideNavBarWidth) );
-top:  var(--headerHeight);
+top:  calc( var(--headerHeight) + var(--headerTopMargin) );
 left: var(--sideNavBarWidth);
 /*display: grid;
 grid-template-columns: 1fr;
@@ -11,8 +11,9 @@ grid-template-rows: calc(0.5 * var(--headerHeight)) calc(0.9 * var(--headerHeigh
 grid-row-gap: calc( 0.20 * var(--headerHeight) );*/
 transition: 0.5s;
 border-style: none;
-height: calc( 100vh - var(--headerHeight) );
+height: calc( 100vh - var(--headerHeight) - 10px );
 min-width: 400px;
+/*background-color: red;*/
 }
 
 

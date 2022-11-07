@@ -7,6 +7,8 @@ import MessagesHead from './HeaderRight/MessagesHead/MessagesHead';
 import UserHead from './HeaderRight/UserHead/UserHead';
 
 
+import {FaUsers} from 'react-icons/fa';
+
 function HeaderRight(props){
 
 
@@ -14,6 +16,10 @@ function HeaderRight(props){
 return (
 
 <div className={classes.headerRight}>
+
+
+
+
 
 
   <ActionItemsHead

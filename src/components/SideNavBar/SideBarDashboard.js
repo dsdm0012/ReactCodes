@@ -1,15 +1,24 @@
 import React,{useState,useEffect} from 'react';
 import classes from './SideBarDashboard.module.css';
 import SideNavBarButton from './SideNavBarButtonDashboard';
-import {BsFillChatDotsFill, BsTable, BsFillCameraVideoFill,BsCalendarDay,BsJournalText,BsQuestionSquare} from 'react-icons/bs';
-import {AiFillHome} from 'react-icons/ai';
-import {MdEmail} from 'react-icons/md';
+import {BsFillChatDotsFill, BsTable, BsFillCameraVideoFill,BsCalendarDay, BsFillCalendarDayFill, BsJournalText,BsQuestionSquare} from 'react-icons/bs';
+import {AiFillHome,AiOutlineHome} from 'react-icons/ai';
+import { MdMailOutline, MdMail} from 'react-icons/md';
 import { useHistory } from "react-router-dom";
 import QuickMeetingPage from './QuickMeetingPage';
 import SideNavBarButtonQMeeting from './SideNavBarButtonQMeeting';
-
 import {FaTools,FaExternalLinkAlt} from 'react-icons/fa';
 import { useMediaPredicate } from "react-media-hook";
+import {FiUsers} from 'react-icons/fi';
+import {BiArchiveIn, BiLinkExternal} from 'react-icons/bi';
+import {BsChatRightDots, BsChatRightDotsFill, 
+	BsPeopleFill, BsPeople, BsBoxArrowUpRight, 
+	BsEnvelopeFill, BsEnvelope, BsTools , BsArchive, BsArchiveFill} from 'react-icons/bs';
+
+
+import {MdOutlineDashboard, MdDashboard} from 'react-icons/md';
+
+import {RiDashboardFill, RiDashboardLine} from 'react-icons/ri';
 
 
 
@@ -31,7 +40,10 @@ const SideBarDashboard =(props)=>{
          color:"var(--themeColor)",
          borderStyle:"none",
          borderColor:"var(--themeColor)",
-         borderWidth:"1px"	  
+         borderWidth:"1px",
+	 borderRadius:"0px",
+         fontWeight:"normal",
+	 iconObj: BsChatRightDots
       }	     
     );
 
@@ -40,7 +52,10 @@ const SideBarDashboard =(props)=>{
          color:"var(--themeColor)",
          borderStyle:"none",
          borderColor:"var(--themeColor)",
-         borderWidth:"1px"
+         borderWidth:"1px",
+	 borderRadius:"0px",
+	 fontWeight:"normal",
+         iconObj: MdOutlineDashboard
       }
     );
 
@@ -51,7 +66,10 @@ const SideBarDashboard =(props)=>{
          color:"var(--themeColor)",
          borderStyle:"none",
          borderColor:"var(--themeColor)",
-         borderWidth:"1px"
+         borderWidth:"1px",
+	 borderRadius:"0px",
+         fontWeight:"normal",
+	 iconObj: MdMailOutline
       }
     );
 
@@ -107,13 +125,19 @@ const SideBarDashboard =(props)=>{
             color:"var(--sideNavBarDashBoardOnClickBtnColor)",
             borderStyle:"none",
             borderColor:"var(--themeColor)",
-            borderWidth:"1px"
+            borderWidth:"1px",
+	    borderRadius:"20px",
+            fontWeight:"bold",
+	    iconObj: BsChatRightDotsFill
             };
         let inActivebuttonColor= {  backgroundColor:inActivebuttonBkgColor,  //"var(--sideNavBarDashBoardBtnBkgColor)",//#c2c3c4
             color:"var(--sideNavBarDashBoardBtnColor)",
-            borderStyle:"solid",
+            borderStyle:"none",
             borderColor:"grey",
             borderWidth:"1px",
+	    borderRadius:"0px",
+            fontWeight:"normal",
+	    iconObj: BsChatRightDots
             };
 
 
@@ -133,13 +157,19 @@ const SideBarDashboard =(props)=>{
             color:"var(--sideNavBarDashBoardOnClickBtnColor)",
             borderStyle:"none",
             borderColor:"var(--themeColor)",
-            borderWidth:"1px"
+            borderWidth:"1px",
+	    borderRadius:"20px",
+	    fontWeight:"bold",
+	    iconObj:RiDashboardFill
             };
         let inActivebuttonColor= {  backgroundColor:inActivebuttonBkgColor, //"var(--sideNavBarDashBoardBtnBkgColor)",
             color:"var(--sideNavBarDashBoardBtnColor)",
-            borderStyle:"solid",
+            borderStyle:"none",
             borderColor:"grey",
-            borderWidth:"1px"
+            borderWidth:"1px",
+	    borderRadius:"0px",
+	    fontWeight:"normal",
+	    iconObj:RiDashboardLine
             };
 
 
@@ -159,13 +189,19 @@ const SideBarDashboard =(props)=>{
             color:"var(--sideNavBarDashBoardOnClickBtnColor)",
             borderStyle:"none",
             borderColor:"var(--themeColor)",
-            borderWidth:"1px"
+            borderWidth:"1px",
+	    borderRadius:"20px",
+            fontWeight:"bold",
+	    iconObj:BsEnvelopeFill
             };
         let inActivebuttonColor= {  backgroundColor: inActivebuttonBkgColor,//"var(--sideNavBarDashBoardBtnBkgColor)",
             color:"var(--sideNavBarDashBoardBtnColor)",
-            borderStyle:"solid",
+            borderStyle:"none",
             borderColor:"grey",
             borderWidth:"1px",
+	    borderRadius:"0px",
+            fontWeight:"normal",
+	    iconObj:BsEnvelope
             };
 
         !props.emailMounted && setEmailButtonColor(emailButtonColor=>inActivebuttonColor);
@@ -297,43 +333,62 @@ return (
 
 
    <SideNavBarButton onPress={homeHandler}
-         icon={AiFillHome}
+         icon={homeButtonColor.iconObj}
          name="Dashboard"
-         buttonColor={{  background: homeButtonColor.backgroundColor,
+         buttonColor={{  
+		         background: homeButtonColor.backgroundColor,
                          borderStyle: homeButtonColor.borderStyle,
                          borderColor: homeButtonColor.borderColor,
-                         color: homeButtonColor.color}}
+                         color: homeButtonColor.color,
+			 borderRadius:homeButtonColor.borderRadius,
+			 fontWeight:homeButtonColor.fontWeight
+	             }}
          />
 
 
 
 
     <SideNavBarButton onPress={generalChatHandler} 
-	 icon={BsFillChatDotsFill} 
+	 icon={generalChatButtonColor.iconObj} 
 	 name="General Chat"
 	 onMouseEnter={showChatWindowOptions}
 	 buttonColor={{  background:generalChatButtonColor.backgroundColor,
 			 borderStyle: generalChatButtonColor.borderStyle,
 			 borderColor: generalChatButtonColor.borderColor,
-	                 color: generalChatButtonColor.color}}
+	                 color: generalChatButtonColor.color,
+			 borderRadius:generalChatButtonColor.borderRadius,
+                         fontWeight:generalChatButtonColor.fontWeight
+	              }}
 	 />
 
 
 
    <SideNavBarButton onPress={emailHandler}
-         icon={MdEmail}
-         name="Email"
+         icon={emailButtonColor.iconObj} 
+         name="Mail"
          buttonColor={{ background:emailButtonColor.backgroundColor,
 		        borderStyle:emailButtonColor.borderStyle,
 			borderColor:emailButtonColor.borderColor,
-			color:emailButtonColor.color }}
+			color:emailButtonColor.color,
+			borderRadius:emailButtonColor.borderRadius,
+                        fontWeight:emailButtonColor.fontWeight
+	              }}
          />
+
+
+ <SideNavBarButton onPress={utilityHandler}
+         icon={FiUsers}
+         name="Contacts"
+         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'none',borderColor:'grey',color:inActivebuttonColor }}
+         />
+
+
 
 
   <SideNavBarButton onPress={utilityHandler}
          icon={BsCalendarDay}
          name="Calender"
-         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'solid',borderColor:'grey',color:inActivebuttonColor }}
+         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'none',borderColor:'grey',color:inActivebuttonColor }}
          />
 
 
@@ -341,26 +396,22 @@ return (
 
    <SideNavBarButton onPress={timeTableHandler}
          icon={BsTable}
-         name="+Time Table"
-         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'solid',borderColor:'grey',color:inActivebuttonColor }}
+         name="Time Table"
+         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'none',borderColor:'grey',color:inActivebuttonColor }}
          />
 
   <SideNavBarButton onPress={utilityHandler}
-         icon={FaTools}
+         icon={BsTools}
          name="Utility"
-         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'solid',borderColor:'grey',color:inActivebuttonColor }}
+         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'none',borderColor:'grey',color:inActivebuttonColor }}
          />
 
 
   <SideNavBarButton onPress={utilityHandler}
-         icon={FaExternalLinkAlt}
+         icon={BsBoxArrowUpRight}
          name="Useful links"
-         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'solid',borderColor:'grey',color:inActivebuttonColor }}
+         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'none',borderColor:'grey',color:inActivebuttonColor }}
          />
-
-
-
-
 
 
 
@@ -368,14 +419,25 @@ return (
    <SideNavBarButton onPress={utilityHandler}
          icon={BsJournalText}
          name="Diary"
-         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'solid',borderColor:'grey',color:inActivebuttonColor }}
+         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'none',borderColor:'grey',color:inActivebuttonColor }}
          />
+
+
+  <SideNavBarButton onPress={utilityHandler}
+         icon={BsArchive}
+         name="Archived Courses"
+         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'none',borderColor:'grey',color:inActivebuttonColor }}
+         />
+
+
+
+
 
 
   <SideNavBarButton onPress={utilityHandler}
          icon={BsQuestionSquare}
          name="Help Center"
-         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'solid',borderColor:'grey',color:inActivebuttonColor }}
+         buttonColor={{background:inActivebuttonBkgColor,borderStyle:'none',borderColor:'grey',color:inActivebuttonColor }}
          />
 
 

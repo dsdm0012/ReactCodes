@@ -58,9 +58,9 @@ return (
 
         {  props.courseData.length ===0 &&
                    <div className={classes.noCourseMessage}> 
-			<h1> There are no courses available in your dashboard. 
+			<span> There are no courses available in your dashboard. 
 			    Create a course and share the course code with your students to get started.
-			</h1> 
+			</span> 
 		   </div>
         }
 

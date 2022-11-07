@@ -7,9 +7,9 @@
       width: var(--sideNavBarWidth);
       position: fixed;
       z-index: 1;
-      top:calc( var(--headerHeight) + var(--sideToolBarHeight));
-      left: 0;
-      background-color: var(--sideNavBarDashBoardBkgColor);
+      top:calc( var(--headerHeight) + var(--sideToolBarHeight) +  10px );
+      left: 0.5%;
+      background-color: var(--sideToolBarBkgColor);/*var(--sideNavBarDashBoardBkgColor);*/
       /*#c2c3c4;*/
       overflow-x: hidden;
       transition: 0.5s;

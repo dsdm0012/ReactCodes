@@ -68,7 +68,7 @@ return (
 
         <TopToolBarTeacher
                                userData = {props.userData}
-                               onPress= {props.rerender}
+                               rerender= {props.rerender}
                                showToolBox1PageContent = {showToolBox1PageContentHandler}
                                showToolBox2PageContent = {showToolBox2PageContentHandler}
                                showToolBox3PageContent = {showToolBox3PageContentHandler}

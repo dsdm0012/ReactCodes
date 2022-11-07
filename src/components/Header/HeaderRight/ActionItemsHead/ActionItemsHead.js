@@ -55,17 +55,25 @@ return (
 
     <div className={classes.actionItemsParentDiv}>
 
+
       <button  className={classes.ActionItemsButton} 
 	 onMouseEnter={onMouseEnterHandler} 
 	 onMouseLeave={onMouseLeaveHandler}  
 	 onClick={actionItemShowHandler}
 	 style={styles} 
       >
+     
+
+
          <FaUsers className={classes.UsersIcon} style={styles}/>
 	 { notificationNum !==0 &&
             <i className={classes.alertMessage}><b>{notificationNum}</b></i> 
-         }		 
+         }
+
+      	
       </button>
+      
+ 
 
 	{ dropDown &&
 	<CourseEnrollmentRequest  setDropDown={setDropDown} 

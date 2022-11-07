@@ -41,19 +41,22 @@ return (
         <div className={classes.topToolBarLeft}>
 
 	        <div className={classes.dashboardTitle}> 	              
-	              <span className={classes.topbarTitle}> <i style={{fontStyle:'normal',color: '#303030'}}>Dashboard</i></span> 
+	              <span className={classes.topbarTitle}> 
+	                  Dashboard
+	              </span> 
 	        </div>
 
                 <div className={classes.userTypeInfo}>
                       {props.userData.usertype===1 && <div>
-                                      <span>You  are a</span>
+                                     
                                       <span className={classes.buttonsDivTnS}>
                                           <button className={classes.teacherButton} onClick={showUsertypeChangeHandler}>
                                              <span>Teacher </span>
                                              <span className={classes.downArrowSpan}><BsChevronDown/></span>
                                           </button>
 
-                                           {showDropDown && <button className={classes.studentButton} onClick={changeUserTypeToStudentHandler}> 
+                                           {showDropDown && <button className={classes.studentButton} 
+						                    onClick={changeUserTypeToStudentHandler}> 
 						               Student 
 						            </button>
 					   }
@@ -63,7 +66,6 @@ return (
                       }
                       {props.userData.usertype===2 && <div>
                                       
-                                        <span>You  are a</span>
                                         <span className={classes.buttonsDivTnS}>
                                           <button className={classes.teacherButton} onClick={showUsertypeChangeHandler}>
                                              <span>Student </span>

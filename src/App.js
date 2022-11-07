@@ -52,6 +52,12 @@ import { useMediaPredicate } from "react-media-hook";
 //import CentralSocketConnection from './CentralSocketConnection';
 import {getcoursesbyCourseId, getuser, getcoursesbyCourseIdArray} from './CommonApps/AllAPICalls';
 
+
+
+
+
+
+
 /*
 function Connect (){
 
@@ -248,12 +254,13 @@ function App() {
 	    rerender={rerenderHandler}
 	    /> 
   
-    <SideToolBar toolBarWidth={sideNavBarWidth}/>
     
     { selectedCourseId !==null &&  <>
-    <SideToolBar toolBarWidth={sideNavBarWidth}/>
- 
-    
+	   
+    <SideToolBar toolBarWidth={sideNavBarWidth}
+	         toolBarBkgColor="var(--sideToolBarBkgColor2)"
+	         />
+
     <SideNavBar sideNavBarWidth={sideNavBarWidth} 
 	dashboardMounted={dashboardMounted} 
 	courseMounted = {courseMounted}   
@@ -281,7 +288,10 @@ function App() {
     
     { selectedCourseId ===null &&
      <> 
- 
+  
+     <SideToolBar toolBarWidth={sideNavBarWidth}
+	          toolBarBkgColor="var(--sideToolBarBkgColor)"
+		  />
      <SideBarDashboard sideNavBarWidth={sideNavBarWidth}
 	              generalChatMounted={generalChatMounted}
 	              homeMounted={dashboardMounted}
@@ -401,6 +411,7 @@ function App() {
                   userData={userData}
 	          dashboardCourses={dashboardCourses}
 	          onPress={rerenderHandler}
+	          rerender={rerenderHandler}
 	  />
       </Route>
 

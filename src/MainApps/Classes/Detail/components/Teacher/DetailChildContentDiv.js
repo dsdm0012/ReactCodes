@@ -38,42 +38,42 @@ return (
     <GoBackNavBar/>
 
 
-   {/* props.selectedCourse !==null && props.selectedCourse.length===0 &&
+    {  props.selectedCourse !==null && props.selectedCourse.length===0 &&
 
-    <div className={classes.noCourseSelectedWarning}> <i> <h2>No Course Selected</h2></i> </div>
-   */}
+      <div className={classes.noCourseSelectedWarning}> <i> <h2>No Course Selected</h2></i> </div>
+    }
 
 
 
-   {/*
-
+   
+     {
     props.selectedCourse !==null && props.selectedCourse.length>0 &&
 
     <>
-
+    
     <ClassTitleBar Course={Course1} selectedCourse= {props.selectedCourse} />
     
     <InstructorBar selectedCourse={props.selectedCourse} />
-
+    
     <PreRequisites/>		   
 
     <ChapterNTopics/>
-
+    
     <ClassTimeNAddress selectedCourse={props.selectedCourse}/>   
-
+    
     <VideoFiles/>
-
+   
     <StudyMaterials/>		   
-
+     
  
     <Homework/>		   
-
+    
 
     <ChatNQuestion/>
 
 
    </>
-  */}
+     }
 
 
 

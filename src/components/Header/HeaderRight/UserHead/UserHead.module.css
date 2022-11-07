@@ -38,6 +38,7 @@
     text-align: center;
     display: flex;
     justify-content: space-between;
+    font-family: Roboto;
     }
 
 .UserHeadButton:hover{

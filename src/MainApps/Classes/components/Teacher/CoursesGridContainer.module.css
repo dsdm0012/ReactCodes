@@ -7,7 +7,10 @@ grid-auto-rows: 200px ;
 border-style: none;
 grid-column-gap: 50px;
 grid-row-gap: 70px;
-margin: 50px;
+border-style: none;
+width: 85%;
+margin: auto;
+margin-top: 50px;
 }
 
 

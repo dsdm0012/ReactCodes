@@ -2,15 +2,31 @@
 border-style: none;
 margin-left:20px;
 position: relative;
+border-color: lightgrey;
+border-width: 2px;
+border-radius: 20px;
+/*box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;*/
 }
+
+
+
+
 
 
 
 .topToolBoxV1{
 cursor: pointer;
-border-style: none;
-border-radius:4px;
+border-style: solid;
+border-radius:20px;
+border-color: var(--lightThemeColor3);
 width:var(--topRightButtonWidth_home);
+font-family: Roboto;
+background-color: var(--toolButtonDashBkgColor);
+/*box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;*/
+padding-top:5px;
+padding-bottom: 5px;
+display: flex;
+justify-content: center;
 }
 
 
@@ -25,7 +41,7 @@ margin-top:10px;
 
 .topToolBoxV1:hover{
 color: var(--themeColor);
-border-style: none;
+background-color: white;
 }
 
 
@@ -40,8 +56,8 @@ color: var(--themeColor);
 .toolBoxIcon{
 
 font-size: var(--topRightButtonIconFontSize_home);
-color: grey;
 padding: 15px;
+
 }
 
 .toolBoxIcon:hover{

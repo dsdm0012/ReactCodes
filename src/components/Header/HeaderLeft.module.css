@@ -6,6 +6,8 @@
     text-align: center;
     padding-left: 20px;
     display: flex;
+    justify-content: space-between;
+    align-items: center; 
     overflow: hidden;
     border-style: none;
     }
@@ -21,6 +23,30 @@
     -ms-transform: perspective(1px) translateY(-50%);
     transform: perspective(1px) translateY(-50%);
     }
+
+
+.logoText{
+color: white;
+font-size: calc( 0.35 * var(--headerHeight) );
+margin: auto;
+border-style: none;
+display: flex;
+justify-content: space-between;
+align-items: center;
+color: white;
+margin-left: 20px;
+}   
+
+.logoText span{
+margin-left: 10px;
+}
+
+
+
+
+
+
+
 
 
 
@@ -49,6 +75,12 @@ display:none;
     font-style: normal;
     background-color: var(--themeColor);
     /*border-style: solid;*/
+    overflow: hidden;
+    border-style: none;
+    line-height: var(--headerHeight);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 20px;
     }
 
 .courseNameButton i{
@@ -72,26 +104,23 @@ font-family: Roboto;
 
 
 .ExpConButton{
-font-size: 20px;
 height: calc( 0.7 * var(--headerHeight));
-position: relative;
-top: 50%;
--webkit-transform: perspective(1px) translateY(-50%);
--ms-transform: perspective(1px) translateY(-50%);
-transform: perspective(1px) translateY(-50%);
-left: 10px;
 border-style: none;
-background-color:var(--headerExpConBtnBkgColor); 
-/*#1e458a;*/
-color: white;
+background-color: var(--headerExpConBtnBkgColor);/* #2f4975;/*#294473;/*var(--headerExpConBtnBkgColor);*/ 
 cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+padding-left: 10px;
+padding-right: 10px;
+margin-left: 20px;
 }
 
 
 .ExpConIcon{
 
-
-
+font-size: calc( 0.35 * var(--headerHeight));
+color: white;
 
 }
 

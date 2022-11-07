@@ -28,7 +28,7 @@ const AssignmentsContentDiv=(props)=>{
       //props.onPress();
     }
 
-    const [toolBox1PageMounted, setToolBox1PageMounted] = useState(false);
+    const [toolBox1PageMounted, setToolBox1PageMounted] = useState(true);
     const [toolBox2PageMounted, setToolBox2PageMounted] = useState(false);
     const [toolBox3PageMounted, setToolBox3PageMounted] = useState(false);
     const [toolBox4PageMounted, setToolBox4PageMounted] = useState(false);

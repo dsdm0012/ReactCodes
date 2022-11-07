@@ -20,12 +20,10 @@ const SideNavBarButton = (props) =>{
 
        
         <button onClick={props.onPress} className={classes.sideNavBarButton} style={props.buttonColor}> 
-	   {TheIcon !==null &&  <TheIcon className={classes.dashIcon} style={{color:"#00aff0"}}/>} 
-	   <i className={classes.buttonText} style={{color:props.buttonColor.color,marginLeft:'10px'}}> 
-	      
-	      {props.name}
-	      
-	   </i>  
+	   {TheIcon !==null &&  <TheIcon className={classes.dashIcon} style={{color:props.buttonColor.color}}/>} 
+	   <span className={classes.buttonText} style={{color:props.buttonColor.color,marginLeft:'10px'}}> 	      
+	      {props.name}	      
+	   </span>  
         </button>
 
 

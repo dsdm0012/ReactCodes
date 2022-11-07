@@ -185,7 +185,7 @@ return (
 	              </div>
 
 	              <div className={classes.middlePart_right}>
-        
+                                     
                                  <button type="button" className={classes.goToCourseButton} onClick={courseSwitchHandler}> 
 	                             <MdDoubleArrow className={classes.goToCourseBtnIcon}/> 
 	                         </button>

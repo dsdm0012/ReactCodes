@@ -13,7 +13,6 @@ const InstructorBar=(props)=>{
 
 
 
- console.log("props.selectedCourse.teacher: ", props.selectedCourse);
 
 
 
@@ -29,7 +28,7 @@ return (
 	</span>  
    </i>
    <button >
-	{props.selectedCourse !==null && props.selectedCourse.length>0 && (  props.selectedCourse.teacher.firstname +" "+ props.selectedCourse.teacher.lastname)}
+	{props.selectedCourse !==null && props.selectedCourse.length>0 && (  props.selectedCourse[0].teacher.firstname +" "+ props.selectedCourse[0].teacher.lastname)}
 	{/*<img className={classes.instructorImage} src={seema} alt='edr Logo' />*/}
    </button> 
   

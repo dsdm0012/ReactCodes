@@ -2,11 +2,11 @@
 
 display: flex;
 flex-direction: column;
-width:80%;
+width:100%;
 align-items: center;
 justify-content: center;
-margin: 10px;
 border-style: none;
+margin: auto;
 }
 
 .name_txt{
@@ -131,7 +131,21 @@ box-sizing: border-box;
 
 
 
+.name_inputDivTimeField{
+border-style: none;
+display: flex;
+width: 100%;
+margin-top: 10px;
+}
 
+
+
+.name_inputDivDayOptions{
+border-style: none;
+display: flex;
+width: 100%;
+margin-top: 10px;
+}
 
 
 

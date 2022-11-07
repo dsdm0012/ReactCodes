@@ -21,33 +21,39 @@ const TheIcon = props.icon;
  }
 
 
-
+//tyle={{boxShadow: props.toolBoxStyle.boxShadow, backgroundColor: props.toolBoxStyle.backgroundColor}}
 
 return (
 
-<div className={classes.parentDivBtn}>
+<div className={classes.parentDivBtn} >
 
-   { props.notificationNum !=="0" &&	
-   <div className={classes.notificationBox}>
-      <i>9</i>
-   </div>
-   }
-  <button className={classes.topToolBoxV1} onClick={sectionHandler}>
-      <TheIcon className={classes.toolBoxIcon} style={{color:props.toolBoxStyle.iconColor}}/>
-      <div  style={{borderStyle: "none", 
+    { props.notificationNum !=="0" &&	
+      <div className={classes.notificationBox}>
+         <i>9</i>
+      </div>
+    }
+    <button className={classes.topToolBoxV1} 
+	  onClick={sectionHandler} 
+	  style={{backgroundColor: props.toolBoxStyle.backgroundColor}}
+	  >
+       <TheIcon className={classes.toolBoxIcon} style={{color:props.toolBoxStyle.iconColor}}/>
+       <div  style={{borderStyle: "none", 
 		      margin:"auto", 
 		      display:"flex",
 		      justifyContent:"center",
 		      fontSize:"var(--topRightButtonTextFontSize_home)",
-		      color:props.toolBoxStyle.iconTitleColor}}
+		      color:props.toolBoxStyle.iconTitleColor,
+		      fontWeight: props.toolBoxStyle.fontWeight
+                      }}
 	              >
-	<b>{props.iconName}</b>
-      </div>	
-  </button>
+          {props.iconName}
+       </div>	
+    </button>
   
-  <div className={classes.highLightDiv} style={{background: props.toolBoxStyle.highLightColor}}>
+    <div className={classes.highLightDiv} 
+	 style={{background: props.toolBoxStyle.highLightColor}}>
 
-  </div>	
+    </div>	
   
 </div>
 

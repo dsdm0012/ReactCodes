@@ -57,12 +57,12 @@ const Subject=(props)=>{
 
       <div className={classes.mainAppContainer} style={mainAppContainerStyle} >
 
-
+      
       <TopInfoBarSubject styles={infoBarActiveButtonColor} selectedCourse={props.selectedCourse}/>
       <Separator/>
-       {/*
+	   {/* 
       <TopTitleBar title={title}/>
-        */}
+      */}
 
       <SummaryContentDiv selectedCourse={props.selectedCourse} 
 	                 rerender={props.rerender}

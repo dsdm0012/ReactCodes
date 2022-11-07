@@ -8,6 +8,9 @@ import HeaderRight from './HeaderRight';
 function Header(props){
 
 return (
+
+   <>
+   <div className={classes.styleDivHeader}> </div>	
    <header className={classes.header}>
 
      <HeaderLeft 
@@ -17,17 +20,17 @@ return (
 	dashboardCourses ={props.dashboardCourses}
      />
 
-
      <HeaderRight
 	userData={props.userData}
 	dashboardCourses ={props.dashboardCourses}
 	rerender={props.rerender}
 	/>	
 
+   </header>
+  </>
 
 
-
-   </header>);
+);
 }
 
 

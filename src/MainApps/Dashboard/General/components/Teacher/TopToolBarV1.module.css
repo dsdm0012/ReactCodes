@@ -3,8 +3,8 @@ border-style: none;
 display: flex;
 flex-direction: column;
 justify-content: center;
-
-
+border-width: 1px;
+border-color:lightgrey;
 }
 
 .iconContainerBox{
@@ -12,8 +12,7 @@ border-bottom-style: none;
 border-bottom-color:grey;
 display: flex;
 flex-direction: row;
-width:95%;
-background-color:white;
+width:90%;
 border-width: 3px;
 border-color: var(--headerRightIconsColor);
 margin: auto;
@@ -37,11 +36,21 @@ flex-direction: column-reverse;
 .topToolBarLeft{
 margin-top: 30px;	
 margin-bottom: 30px;
+margin-left: 20px;
 }
 
 
 
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -61,7 +70,7 @@ height:100%;
 border-style: none;
 /*background: linear-gradient(to left top, white, var(--lightThemeColor1)	);*/
 border-radius: 10px;
-border-color: #F5F5F5;
+border-color: red;
 border-width: 3px;
 padding-bottom: 20px;
 }
@@ -78,18 +87,18 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 color: grey;
+border-style: none;
 }
 
 .dashboardTitle span{
-margin-left: 20px;
-font-size: 40px;
-color: black;
+font-size: 20px;
+color: var(--deepDarkThemeTextColor);
+font-weight: bold;
 }
 
 
 .userTypeInfo{
-margin-left: 30px;
-color: grey;
+font-family: Roboto;
 }
 
 
@@ -124,8 +133,14 @@ border-radius: 4px;
 
 .teacherButton{
 cursor: pointer;
-margin-left: 10px;
+margin-top: 10px;
 border-style: none;
+padding:7px;
+width: 120px;
+background-color: white;
+border-radius: 5px;
+color: var(--deepDarkThemeTextColor);
+box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .downArrowSpan{
@@ -140,21 +155,34 @@ position: relative;
 
 .studentButton{
 position: absolute;
-top:20px;
 right: 0px;
-padding-right: 25px;
+top: 17px;
 border-style: none;
-background-color: #00aff0;
-border-radius: 3px;
 color: white;
 cursor: pointer;
+margin-left: 10px;
+margin-top: 10px;
+border-style: none;
+padding:7px;
+width: 120px;
+background-color: white;
+color: var(--deepDarkThemeTextColor);
+box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
 }
+
+
+.studentButton:hover{
+background-color:#00aff0 ;
+}
+
+
+
 
 
 .topbarTitle{
  color: red;
- font-family: Monospace;
- font-style:normal;
+ font-family: Roboto;
 }
 
 

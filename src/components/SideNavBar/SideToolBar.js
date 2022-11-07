@@ -8,7 +8,9 @@ const SideToolBar=(props)=>{
 return (
 
 
-<SideToolBarOnExpand toolBarWidth={props.toolBarWidth}/>
+<SideToolBarOnExpand toolBarWidth={props.toolBarWidth}
+	             toolBarBkgColor={props.toolBarBkgColor}
+	             />
 
 
 

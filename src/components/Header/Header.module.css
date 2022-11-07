@@ -1,6 +1,23 @@
 
 
-header{
+
+
+
+.styleDivHeader{
+height: 5px;
+width:96%;
+background-color: var(--headerRightIconsColor);
+margin-left: 2%;
+margin-top: 5px;
+position: fixed;
+border-radius: 10px 10px 0px 0px;
+}
+
+
+
+
+
+.header{
 
      background-color: var(--themeColor);
      height: var(--headerHeight);
@@ -12,9 +29,12 @@ header{
      font-size: var(--headerFontSize);
      box-shadow:none;
      position: fixed;
-     width: 100%;
+     width: 99%;
      z-index:2;
-
+     border-radius:10px;
+     margin-left: 0.5%;
+     margin-right: 0.5%;
+     top: 10px;
 }
 
 

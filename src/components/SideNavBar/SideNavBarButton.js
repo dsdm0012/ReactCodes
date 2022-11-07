@@ -16,7 +16,7 @@ const SideNavBarButton = (props) =>{
    return(
 
       <button onClick={props.onPress} className={classes.sideNavBarButton} style={props.buttonColor}> 
-	   <TheIcon className={classes.dashIcon}/> <i className={classes.buttonText}> {props.name}</i> 
+	   <TheIcon className={classes.dashIcon}/> <span className={classes.buttonText}> {props.name}</span> 
       </button>
 
 

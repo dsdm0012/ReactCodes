@@ -12,9 +12,10 @@
 
 .UsersIcon{
 
-    font-size: calc( 0.4 * var(--headerHeight) );
+    font-size: calc( 0.35 * var(--headerHeight) );
     color: var(--headerRightIconsColor);
     vertical-align:middle;
+    flex-shrink: 0;
     }
 
 
@@ -27,18 +28,18 @@
 
 .ActionItemsButton{
     position: relative;
-    height: calc( 0.65 * var(--headerHeight) );
-    width: calc( 0.65 * var(--headerHeight) );
+    height: calc( 0.70 * var(--headerHeight) );
+    width: calc( 0.70 * var(--headerHeight) );
     border-style: solid;
-    border-width:medium;
+    border-width:initial;
     border-color: var(--headerRightIconsColor);
     border-radius: 50%;
     background-color: var(--themeColor);
     vertical-align: middle;
     cursor:pointer;
-    display:flex;
-    align-items: center;
+    display: flex;
     justify-content: center;
+    align-items: center; 
     }
 
 

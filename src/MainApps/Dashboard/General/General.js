@@ -107,14 +107,12 @@ const General=(props)=>{
    return(
 
       <div className={classes.mainAppContainer} style={mainAppContainerStyle} >
-  	    
-          <TopInfoBarGeneral styles={infoBarActiveButtonColor} selectedCourse={props.selectedCourse}/>
-       
-          
-          <Separator/>
-	   {/*	    
+	  {/*     	    
+          <TopInfoBarGeneral styles={infoBarActiveButtonColor} selectedCourse={props.selectedCourse}/>	          
+          <Separator/>	    	    
           <TopTitleBar title={title}/>
-	  */}   
+	  */}  
+
           <GeneralContentDiv 
 	     dashboardCourses={props.dashboardCourses}
 	     socketObj = {props.socketObj}

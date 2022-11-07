@@ -2,12 +2,14 @@ import React,{useState} from 'react';
 import classes from './HeaderLeft.module.css';
 import companyLogo from './img/logoBlueWhite.PNG'
 //import {Link} from 'react-router-dom';
-import {FaBars} from 'react-icons/fa';
+import {BsList} from 'react-icons/bs';
 import CourseDropDown from './CourseDropDown';
 import { useHistory } from "react-router-dom";
 
 import {IoMdArrowRoundBack } from 'react-icons/io';
 
+
+import {SiRedux} from 'react-icons/si';
 
 //import {Typography} from '@material-ui/core';
 
@@ -59,10 +61,18 @@ return (
       }
 
 
+        {/*
+         <img className={classes.logo} src={companyLogo} alt='edr Logo' />
+       */}
 
-      <img className={classes.logo} src={companyLogo} alt='edr Logo' />
+       <div className={classes.logoText}>
+	<SiRedux/> <span>diracAI</span>
+       </div>
 
-      <button className={classes.ExpConButton} onClick={props.onPress}> <FaBars className={classes.ExpConIcon} /></button>	
+
+      <button className={classes.ExpConButton} onClick={props.onPress}> 
+	  <BsList className={classes.ExpConIcon} />
+      </button>	
 
       <div className={classes.courseNameButton}  onMouseOver={showCourses} onMouseLeave={hideCourses} >
           
@@ -70,7 +80,7 @@ return (
            
          
 
-	 <i onClick={dashClickHandler} className={classes.clickDash}> { props.selectedCourse ===null &&  <span> <b>Home</b></span>} </i>
+	 <i onClick={dashClickHandler} className={classes.clickDash}> { props.selectedCourse ===null &&  <span> Home</span>} </i>
 
 
 

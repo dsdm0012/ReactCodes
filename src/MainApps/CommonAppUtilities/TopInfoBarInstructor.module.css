@@ -34,6 +34,9 @@ color: #c2c3c4;
 
 .topInfoBar__instructorName{
 overflow: hidden;
+font-style: normal;
+margin-left: 50px;
+font-size: calc( 0.65 * 0.82 * 0.5 * var(--headerHeight) );
 }
 
 @media only screen and (max-width: 600px) {
@@ -51,11 +54,11 @@ display: none;
 
 
 
-
+/*
 .topInfoBar__instructor i{
 font-style: normal;
 margin-left: 50px;
 font-size: calc( 0.65 * 0.82 * 0.5 * var(--headerHeight) );
 }
-
+*/
 

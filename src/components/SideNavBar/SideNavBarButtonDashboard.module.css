@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
-
+/*@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
+*/
 
 .mainButtonContainer{
 
@@ -25,30 +25,29 @@ z-index:999999999;
  .sideNavBarButton {
       padding: calc( 0.16 * var(--headerHeight) );
       text-decoration: none;
-      font-size: var(--sideNavBarFontSize);;
+      font-size: var(--sideNavBarFontSize);
       color: var(--sideNavBarIconColor);
       /*background-color:#c2c3c4;*/
-      border-style: solid;
+      border-style: none;
       border-color:#757575;
       border-width: thin;
       display: block;
-      font-style: normal;
       transition: 0.3s;
       font-weight: 100;
       margin:5px;
-      width: var(--sideNavBarWidth);
       text-align: left;
       cursor: pointer;
       position:relative;
       align-items: center;
-      font-family: Roboto;
       border-style: none;
       background: red;
       width:100%;
+      width: calc( var(--sideNavBarWidth) - 10px );
       height:100%;
       padding-top:10px;
       padding-bottom: 10px;
       padding-left: 20px;
+      font-family: Roboto;
     }
 
 
@@ -59,29 +58,26 @@ z-index:999999999;
 }
 
 
-
+/*
 .sideNavBarButton i {
       font-style: normal;
       font-family: sans-serif;
       padding-left: 0px;
       font-size: calc( 0.9 * var(--sideNavBarFontSize) );
     }
-    
-
+   
+*/
 
 .buttonText{
 color: var(--themeColor);
 vertical-align: middle;
-font-size: 10px;
-font-weight: 400;
-font-style: Roboto;
 }
 
 
 .dashIcon{
 vertical-align: middle;
 padding-right: 5px;
-font-size:var(--sideNavBarFontSize);
+font-size:var(--sideNavBarIconSize);
 color: var(--themeColor);
 }
 

@@ -7,11 +7,14 @@ import {CgClipboard} from 'react-icons/cg';
 import {FaList,FaSearch} from 'react-icons/fa';
 import {AiFillNotification} from 'react-icons/ai';
 import {RiVideoLine} from 'react-icons/ri';
-import {AiOutlineFile} from 'react-icons/ai';
+import {AiOutlineFile, AiOutlineBarChart} from 'react-icons/ai';
 import {BsLink45Deg} from 'react-icons/bs';
 import {CgNotes} from 'react-icons/cg';
+import CreateClassForm from './Forms/CreateCourseForm';
 
-import CreateClassForm from './CourseCreate/CreateCourseForm';
+import {GrTask} from 'react-icons/gr';
+
+
 
 
 
@@ -345,7 +348,7 @@ const TopToolBar =(props)=>{
 
     const closeCreateClassFormHandler =()=>{
        setShowCreateClassForm(false);
-       //props.onPress();
+       props.rerender();
     }
 
 
@@ -365,7 +368,9 @@ return (
 
      { showCreateClassForm &&
  
-      <CreateClassForm onPress={closeCreateClassFormHandler} selectedCourse={props.selectedCourse}/> 
+      <CreateClassForm onPress={closeCreateClassFormHandler} 
+	               selectedCourse={props.selectedCourse} 
+	               /> 
      }
 
 
@@ -376,13 +381,13 @@ return (
          <div className={classes.leftInnerBoxTopBar}>
         	<div className={classes.TitleBox1}> 
 	           
-	               Your Classes  
+	               Organize Your Classes  
 	          
 	        </div>
 	        
 	        <div className={classes.TitleBox2}>
 
-	          <button type="button" onClick={showCreateClassFormHandler}> +Create a class </button>
+	          <button type="button" onClick={showCreateClassFormHandler} className={classes.createClassButton}> +Create a class </button>
 	        </div>
 		
          </div>
@@ -403,14 +408,14 @@ return (
 	             />
              <TopToolBox toolBoxStyle = {toolBox3Style} 
 	             onPress = {showToolBox3Handler} 
-	             icon={RiVideoLine} 
+	             icon={GrTask} 
 	             iconName="All"
 	             notificationNum="0"
 	             />
 
              <TopToolBox toolBoxStyle = {toolBox4Style}
                      onPress = {showToolBox4Handler} 
-                     icon={AiOutlineFile}
+                     icon={AiOutlineBarChart}
                      iconName="Insights"
                      notificationNum="0"
                      />

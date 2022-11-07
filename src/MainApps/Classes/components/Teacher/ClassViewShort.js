@@ -203,11 +203,12 @@ return (
        <div className={classes.infoUnitBar} style={{borderColor:style.topBarBottomColor,backgroundColor: style.boxBkgColor}}>
 
         <div className={classes.subjectSection}> 
-	   <span className={classes.serialNo}> 1 </span>
+	   <div className={classes.serialNo}> 7th Oct 2022</div>
+	   {/*
 	   <span className={classes.subjectTitle} style={{color: style.subjectColor}}> CLASS ID: </span>
 	   <span className={classes.subjectName} style={{color: style.rightButtonColor}}>{props.Class.id}</span>   
            <span className={classes.signupIcon}> <BsFillCheckSquareFill/> </span>
-
+           */}
 	</div>          
 
 

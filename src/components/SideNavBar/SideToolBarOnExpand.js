@@ -38,8 +38,12 @@ const SideToolBarOnExpand = (props)=>{
 return (
 
 
-<div className={classes.parentDiv} style={{width:toolBarWidth}}>
-  <div className={classes.sideToolBarDiv} style={{width:toolBarWidth}}>
+<div className={classes.parentDiv} 
+	style={{width:toolBarWidth, backgroundColor: props.toolBarBkgColor }}
+	>
+  <div className={classes.sideToolBarDiv} 
+       style={{width:toolBarWidth, backgroundColor: props.toolBarBkgColor }}
+       >
 
     {contract && <SideToolBarButton1/>}
 

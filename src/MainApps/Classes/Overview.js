@@ -67,6 +67,7 @@ const Overview=(props)=>{
 	   onPress={props.onPress} 
 	   dashboardCourses={props.dashboardCourses}
 	   selectedCourse={props.selectedCourse}
+	   rerender={props.rerender}
 	   />
 
       </div>

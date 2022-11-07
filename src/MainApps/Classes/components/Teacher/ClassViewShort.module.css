@@ -48,7 +48,7 @@ overflow: hidden;
 white-space: nowrap;
 text-overflow: ellipsis;
 color: grey;
-border-style: none;
+border-style: solid;
 }
 
 .signupIcon{
@@ -59,10 +59,14 @@ color: green;
 .serialNo{
 color: white;	
 background-color: var(--themeColor);
-padding-right:5px;
-padding-left: 5px;
+padding-right:25px;
+padding-left: 25px;
+padding-top: 5px;
+padding-bottom: 5px;
 border-radius: 3px;
 margin-right: 5px;
+font-weight: bold;
+
 }
 
 
