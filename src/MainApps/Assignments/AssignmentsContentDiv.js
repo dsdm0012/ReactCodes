@@ -5,28 +5,34 @@ import TopToolBarTeacher from './components/Teacher/TopToolBarV1';
 import Pending from './Pending.js';
 import Completed from './Completed';
 import All from './All';
-import {getuser} from '../../CommonApps/AllAPICalls';
+import {getassignment} from '../../CommonApps/AllAPICalls';
+import {getassignment1} from '../../CommonApps/AllAPICalls';
 
 
 
 
 const AssignmentsContentDiv=(props)=>{
 
-  const [userData,setData]=useState(null);
+
+
+  const [assignmentdata, setData] = useState(null);
+  const [assignmentCompletedData, completedSetData] = useState(null);
+
+   useEffect(() =>{
+    let courseID = 3;  
+    getassignment({courseID, setData});        
+   },[setData]);
+
+   useEffect(() =>{
+    let courseID = 3;  
+    getassignment1({courseID, completedSetData});        
+   },[completedSetData]);
+
+console.log("assignmentdata", assignmentdata);
 
 
 
-  useEffect(()=>{
-    console.log("useEffect-2");   
-          getuser({setData});
-      },[])
 
-      console.log("userData", userData);
-
-    const reRenderHandler=()=>{
-      //setRerender(!rerender);
-      //props.onPress();
-    }
 
     const [toolBox1PageMounted, setToolBox1PageMounted] = useState(true);
     const [toolBox2PageMounted, setToolBox2PageMounted] = useState(false);
@@ -102,9 +108,9 @@ return (
 
 
 
-{toolBox1PageMounted && <Pending onClick={showToolBox1PageContentHandler} />}
-{toolBox2PageMounted && <Completed onClick={showToolBox2PageContentHandler}/>}
-{toolBox3PageMounted && <All onClick={showToolBox3PageContentHandler}/>}
+{toolBox1PageMounted && <Pending assignmentdata={assignmentdata} onClick={showToolBox1PageContentHandler} />}
+{toolBox2PageMounted && <Completed assignmentCompletedData={assignmentCompletedData} onClick={showToolBox2PageContentHandler}/>}
+{toolBox3PageMounted && <All assignmentdata={assignmentdata} onClick={showToolBox3PageContentHandler}/>}
 
 
 </div>

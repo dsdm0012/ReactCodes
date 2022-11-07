@@ -3018,6 +3018,33 @@ export const changeusertype = ({usertypeId})=>{
                         });
 }
 
+/*Assignment API*/
+export const getassignment =({courseID, setData})=>{
+
+  axiosInstance.get(`assignment/get/${courseID}/`)
+  .then((res) => {
+    setData(data=>res.data);
+  })
+  .catch((error)=>{
+       if(error.response.status===401){
+  Logout();	     
+  
+        }
+  });
+  }
+  export const getassignment1 =({courseID, completedSetData})=>{
+  
+    axiosInstance.get(`assignment/get/${courseID}/`)
+    .then((res) => {
+      completedSetData(data=>res.data);
+    })
+    .catch((error)=>{
+         if(error.response.status===401){
+    Logout();	     
+    
+          }
+    });
+    }
 
 
 

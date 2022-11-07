@@ -61,7 +61,7 @@ const Assignments=(props)=>{
       {/*
       <TopTitleBar title={title}/>
        */}
-      <Separator/>
+      {/* <Separator/> */}
 
       <AssignmentsContentDiv
            userData={props.userData}
