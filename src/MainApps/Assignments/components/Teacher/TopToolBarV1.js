@@ -15,7 +15,8 @@ import {FaHourglassHalf} from 'react-icons/fa';
 import {FaCheckCircle} from 'react-icons/fa';
 import {FaCalendarAlt} from 'react-icons/fa';
 import {FaPenAlt} from 'react-icons/fa';
-
+import Assignmentform from '../../Assignmentform';
+import {getlinksbyCourseId} from '../../../../CommonApps/AllAPICalls';
 
 
 
@@ -340,6 +341,39 @@ const TopToolBar =(props)=>{
 
 
 
+     const [showAddAssignmentForm, setShowAddAssignmentForm] = useState(false);
+  
+     const [formsData, getFormsData]=useState(null);
+     const [pageNo , setPageNo] = useState(1);
+  
+  
+//       useEffect(()=>{
+//       console.log("new pageNo", pageNo);
+//       let courseId = props.selectedCourse[3].id;
+//       getlinksbyCourseId({ pageNo, courseId, getLinksData});
+  
+//      },[props.userData, pageNo]);
+  
+  
+  
+     const addAssignmentHandler=()=>{
+        setShowAddAssignmentForm(true);	   
+     }
+  
+  
+     const openFormInNewTabHandler=({link_})=>{
+         let AssignmentFormLink = link_;
+         window.open(AssignmentFormLink, "_blank") 
+     }
+  
+  
+     const closeFormHandler=()=>{
+        setShowAddAssignmentForm(false);
+      props.rerender();
+     }
+  
+  
+      console.log("formsData: ", formsData);
 
 
 
@@ -365,8 +399,16 @@ return (
 	        </div>
 	        
 	        <div className={classes.TitleBox2}> 
+                { showAddAssignmentForm &&
+             <Assignmentform userData={props.userData}
+                    Course={props.selectedCourse[0]}
+                    rerender={props.rerender}
+                    onPress={closeFormHandler}
+                    />
+        }
+
 	        
-                   <button type="button" className={classes.createbtn}><FaPenAlt/> Create an assignment </button>
+                   <button type="button" className={classes.createbtn} onClick={addAssignmentHandler}><FaPenAlt/> Create an assignment </button>
 
 	        </div>
 		

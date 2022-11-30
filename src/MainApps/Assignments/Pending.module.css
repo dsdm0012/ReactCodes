@@ -60,10 +60,12 @@
 }
 
 .courseid{
+    width: 05%;
     background-color: #dcf7ea;
     text-align: center;
     font-size: 15px;
     padding: 5px;
+    margin-top: 10px;
     color: #8ed5b1;
 }
 

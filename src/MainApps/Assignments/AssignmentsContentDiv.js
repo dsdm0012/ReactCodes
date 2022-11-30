@@ -6,7 +6,8 @@ import Pending from './Pending.js';
 import Completed from './Completed';
 import All from './All';
 import {getassignment} from '../../CommonApps/AllAPICalls';
-import {getassignment1} from '../../CommonApps/AllAPICalls';
+import Assignmentform from './Assignmentform';
+
 
 
 
@@ -14,21 +15,36 @@ import {getassignment1} from '../../CommonApps/AllAPICalls';
 const AssignmentsContentDiv=(props)=>{
 
 
+  const [showAssignmentForm, setAssignmentForm] = useState(false);
 
+  const [linksData, getLinksData]=useState(null);
+  const [pageNo , setPageNo] = useState(1);
+
+
+
+
+
+
+  const closeFormHandler=()=>{
+    setAssignmentForm(false);
+    // props.rerender();
+    
+   }
+
+
+
+   console.log("linksData: ", linksData);
   const [assignmentdata, setData] = useState(null);
   const [assignmentCompletedData, completedSetData] = useState(null);
+  const [validForm, setValidForm] = useState(null);
 
    useEffect(() =>{
     let courseID = 3;  
     getassignment({courseID, setData});        
    },[setData]);
 
-   useEffect(() =>{
-    let courseID = 3;  
-    getassignment1({courseID, completedSetData});        
-   },[completedSetData]);
+  
 
-console.log("assignmentdata", assignmentdata);
 
 
 
@@ -73,7 +89,7 @@ console.log("assignmentdata", assignmentdata);
      const [videosData, getVideosData]=useState(null); 
 
 
-
+   
 
 
 
@@ -109,9 +125,9 @@ return (
 
 
 {toolBox1PageMounted && <Pending assignmentdata={assignmentdata} onClick={showToolBox1PageContentHandler} />}
-{toolBox2PageMounted && <Completed assignmentCompletedData={assignmentCompletedData} onClick={showToolBox2PageContentHandler}/>}
+{toolBox2PageMounted && <Completed assignmentdata={assignmentdata} onClick={showToolBox2PageContentHandler}/>}
 {toolBox3PageMounted && <All assignmentdata={assignmentdata} onClick={showToolBox3PageContentHandler}/>}
-
+{props.selectedCourse !==null && props.selectedCourse.length >0 && showAssignmentForm && <Assignmentform Course={props.selectedCourse[0]} onPress={closeFormHandler}/>}
 
 </div>
 

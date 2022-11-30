@@ -34,7 +34,9 @@ const AssignmentBoxPending=(props)=>{
         
            <div style={{marginRight:'20px', fontSize:'20px'}}><FaAngleDoubleRight/></div>
          </div>
+         <div>
          <div className={classes.courseid}>{props.oneAssignment.id}</div>
+         </div>
            </div>
            
          

@@ -4,14 +4,14 @@ import AssignmentBox from './AssignmentBox';
 
 
 function Completed(props){
-  console.log('hello',props.assignmentCompletedData);
+  console.log('hello',props.assignmentdata);
     return(
       
       <div className={classes2.completeddiv}>
       
       { 
-        props.assignmentCompletedData !==null && 
-        props.assignmentCompletedData.map((oneAssignment, index)=>{
+        props.assignmentdata !==null && 
+        props.assignmentdata.map((oneAssignment, index)=>{
 
           return <AssignmentBox key={index} oneAssignment={oneAssignment}/>
           

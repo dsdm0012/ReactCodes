@@ -3032,21 +3032,68 @@ export const getassignment =({courseID, setData})=>{
         }
   });
   }
-  export const getassignment1 =({courseID, completedSetData})=>{
-  
-    axiosInstance.get(`assignment/get/${courseID}/`)
-    .then((res) => {
-      completedSetData(data=>res.data);
-    })
-    .catch((error)=>{
-         if(error.response.status===401){
-    Logout();	     
-    
-          }
-    });
-    }
+ 
+
+/*AssignmentForm API*/
+export const assignmentform = ({formData,courseId,props})=>{
+
+  axiosInstance
+     .put(`assignment/get/${courseId}/`,{
+
+ "title": formData.title,
+ "creater":formData.creater,
+ "description": formData.description,
+ "publishDate": formData.publishDate,
+ "dueDate": formData.dueDate,
+ "credit": formData.credit,
+ "questionFiles": formData.questionFiles,
+ "answerFiles": formData.answerFiles,
 
 
+                     })
+                     .then((res) => {
+         props.rerender();
+             })
+      .catch((error)=>{
+                  if(error.response.status===401){
+                  Logout();
+
+                   }
+
+
+             });
+
+}
+
+export const createAssignmentform =({formData, courseId, props, setFormData})=>{
+
+
+  axiosInstance.put(`assignment/create/${courseId}/`,{
+    "id": formData.id,
+        "title": formData.title,
+        "creater": formData.creater,
+        "description": formData.description,
+        "publishDate": formData.publishDate,
+        "dueDate": formData.dueDate,
+        "credit": formData.credit,
+        "questionFiles": formData.questionFiles,
+        "answerFiles": formData.answerFiles
+
+
+                  })
+                  .then((res) => {
+                    setFormData("notSaving");
+                    props.onPress();
+
+                    })
+
+                  .catch((error)=>{
+                       if(error.response.status===401){
+                        Logout();
+                      }
+
+                  });
+}
 
 
 
