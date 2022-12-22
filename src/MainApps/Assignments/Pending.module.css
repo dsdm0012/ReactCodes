@@ -1,71 +1,106 @@
-.pendingdiv{
-    width: 90%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr) );
-    /* grid-auto-rows: 250px ; */
-    /* border-style: none; */
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    /* margin: 50px; */
-    margin-top: 50px;
-    
+.pendingdiv {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+  /* grid-auto-rows: 250px ; */
+  /* border-style: none; */
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  /* margin: 50px; */
+  margin-top: 50px;
 }
 
-.status{
-    background-color: #FAFAD2;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #8ea3f5;
+.status {
+  /* background-color: #FAFAD2; */
+
+  font-size: 14px;
+  font-weight: bold;
+  color: #8ed5b1;
+  margin-top: 10px;
 }
-.assignmentBox{
-    height: 200px;
-    /*margin-top: 35px;
-    */box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-    border-radius: 8px;
+.assignmentBox {
+  height: 100px;
+  padding: calc(0.5 * var(--headerHeight));
+  border: 1px solid #d3d3d3;
+  border-radius: var(--cardBorderRadius);
+  border-radius: 8px;
 }
 
-.assignmentDetails{
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    background-color: #F0F0F0;
-    
+.assignmentDetails {
+  font-size: 12px;
+  border-left: 1px solid #000000;
+  padding-left: 10px;
+  /* background-color: #f0f0f0; */
 }
-.assignmentTitle{
-    color:#224c98;
-    font-size: 20px;
-    margin-top: 15px;
-    margin-left: 15px;
-    display: flex;
-    justify-content: space-between;
-    margin-right: 10px;
-}
-.assignmentDescription{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-left: 15px;
-    font-size: 15px;
+.assignmentTitle {
+  color: #000000;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-.totalCredit{
-    margin-top: 0px;
-    text-align: center;
-   
+.totalCredit {
+  margin-top: 10px;
+  text-align: left;
+  margin-right: 25px;
 }
 
-.courseid{
-    width: 05%;
-    background-color: #dcf7ea;
-    text-align: center;
-    font-size: 15px;
-    padding: 5px;
-    margin-top: 10px;
-    color: #8ed5b1;
+.courseid {
+  width: 10%;
+  background-color: #dcf7ea;
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  height: 20px;
+  margin-right: 05px;
+  color: #8ed5b1;
+}
+.CreditId {
+  display: flex;
+  justify-content: space-between;
 }
 
+.progress {
+  margin-top: 05px;
+  padding: 0;
+  width: 200%;
+  height: 10px;
+  overflow: hidden;
+  background: #e5e5e5;
+  border-radius: 6px;
+}
+
+.bar {
+  position: relative;
+  float: left;
+  min-width: 1%;
+  height: 100%;
+  width: 36%;
+  background: #aee1ae;
+}
+
+.assignmentidupload {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+.uploadBtn {
+  margin-left: 10px;
+  padding-top: 5px;
+}
+.answerFileUpload {
+  background-color: #224c98;
+  border-style: none;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.assignmentprogesssection {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}

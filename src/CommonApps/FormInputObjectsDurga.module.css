@@ -44,15 +44,30 @@
         .file_upload{
             position: relative;
             width: 100%;
-            font-size:20px;
+            font-size:15px;
             box-sizing: border-box;
             /* border-style:solid; */
             border-width: 1px;
-            border-color: lightgrey;
+            border-color: #E0E0E0;
             background-color: white;
             border-radius: 5px;
             padding-left: 10px;
             }
+            input::file-selector-button {
+                background-color: #224c98;
+                background-position-x: 0%;
+                background-size: 200%;
+                border: 0;
+                border-radius: 8px;
+                color: #fff;
+                padding: 10px;
+                
+                
+              }
+              input::file-selector-button:hover {
+                background-position-x: 100%;
+                
+              }
     /* End:: css for File upload */
 
     .name_inputDiv{
@@ -70,7 +85,7 @@
     box-sizing: border-box;
     border-style:solid;
     border-width: 1px;
-    border-color: lightgrey;
+    border-color: #E0E0E0;
     background-color: white;
     border-radius: 5px;
     padding-left: 10px;
@@ -97,20 +112,20 @@
     box-sizing: border-box;
     border-style:solid;
     border-width: 1px;
-    border-color: lightgrey;
+    border-color: #E0E0E0;
     background-color: white;
     border-radius: 5px;
     padding: 10px;
-    font-size: 20px;
+    font-size: 15px;
     font-style: normal;
     font-family: Roboto;
     }
     
     .input_field_paragraph:focus{
     border-style: solid;
-    border-width: 2px;
+    border-width: 4px;
     outline: none !important;
-    border-color: #719ECE;
+    border-color: #C6D8EB;
     border-radius:5px;
     
     }

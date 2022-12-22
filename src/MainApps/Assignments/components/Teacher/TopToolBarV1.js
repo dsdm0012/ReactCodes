@@ -369,7 +369,7 @@ const TopToolBar =(props)=>{
   
      const closeFormHandler=()=>{
         setShowAddAssignmentForm(false);
-      props.rerender();
+//       props.rerender();
      }
   
   
